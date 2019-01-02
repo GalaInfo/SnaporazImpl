@@ -14,6 +14,7 @@
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     </head>
 
     <body>
@@ -101,7 +102,7 @@
                             <img class="rounded-circle img-fluid d-block mx-auto" src="img/piu.png" alt="user_thumbnail">
                             <h4>Aggiungi Ruolo
                             </h4>
-                            <select class="form-control mb-1" id="ruolo-troupe">
+                            <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="ruolo-troupe">
                                 <option>Regista</option>
                                 <option>Direttore della Fotografia</option>
                                 <option>Direttore del Montaggio</option>
@@ -156,21 +157,20 @@
                             <h4>Posizione Aperta
                             </h4>
                             <p class="mb-1"><strong>Comparsa</strong><br>Passante</p>
-                            <input class="form-control" list="candidati" name="candidati">
-                            <datalist id="candidati">
+                            <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta">
                                 <option>Leonardo Di Caprio</option>
                                 <option>Matt Damon</option>
                                 <option>Stanley Kubrick</option>
                                 <option>Audrey Hepburn</option>
                                 <option>Kate Winslett</option>
-                            </datalist>
+                            </select>
                             <button type="button" class="btn red arrows"><span>Assegna </span></button>
                         </div>
                         <div class="col-lg-2 col-sm-6 text-center mb-4">
                             <img class="rounded-circle img-fluid d-block mx-auto" src="img/piu.png" alt="user_thumbnail">
                             <h4>Aggiungi Ruolo
                             </h4>
-                            <select class="form-control mb-1" id="ruolo-cast">
+                            <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="ruolo-cast">
                                 <option>Attore Principale</option>
                                 <option>Attrice Principale</option>
                                 <option>Attore Secondario</option>
@@ -251,6 +251,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script type="text/javascript">
             $(function () {
                 $("#navbar").load("nav.html");
