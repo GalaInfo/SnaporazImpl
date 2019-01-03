@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Snaporaz</title>
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+    </head>
+    <body>
+        <div id="navbar" class="fixed-top"></div>
+        <div class="container">
+            <div class="row my-4">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a href="" data-target="#login" data-toggle="tab" class="nav-link active">Accedi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" data-target="#signup" data-toggle="tab" class="nav-link">Registrati</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content pb-3">
+                        <div class="tab-pane active" id="login">
+                            <div class="row my-4">
+                                <div class="col-md-12 mx-auto">
+                                    <form>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" id="projectTitle" placeholder="email@esempio.it">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" id="projectSurname">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn red arrows col-sm-3 float-right"><span>Accedi </span></button>
+                                    </form>
+                                </div>
+                            </div>                  
+                        </div>
+
+                        <div class="tab-pane" id="signup">
+                            <div class="row my-4">
+                                <div class="col-md-12 mx-auto">
+                                    <form>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Nome</label>
+                                                <input type="text" class="form-control" id="peopleName" placeholder="Nome">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Cognome</label>
+                                                <input type="text" class="form-control" id="peopleSurname" placeholder="Cognome">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" id="projectTitle" placeholder="email@esempio.it">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Ruoli</label>
+                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                    <option>Attore</option>
+                                                    <option>Attrice</option>
+                                                    <option>Regista</option>
+                                                    <option>Direttore della Fotografia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Telefono</label>
+                                                <input type="text" class="form-control" id="inputAddressLine2" placeholder="Numero di telefono">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Immagine Profilo</label>
+                                                <input class="form-control" type="file">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Indirizzo</label>
+                                                <input class="form-control" type="text" value="" placeholder="Via">
+                                            </div>
+                                            <div class="col-sm-6 row">
+                                                <div class="col-sm-6">
+                                                    <label>Città</label>
+                                                    <input class="form-control" type="text" value="" placeholder="Città">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label>Stato</label>
+                                                    <input class="form-control" type="text" value="" placeholder="Stato">
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" id="inputAddressLine2">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label>Conferma Password</label>
+                                                <input class="form-control" type="password">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn red arrows col-sm-3 float-right"><span>Registrati </span></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="py-5 red">
+            <div class="container">
+                <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#navbar").load("nav.html");
+            });
+        </script>
+    </body>
