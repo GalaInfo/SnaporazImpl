@@ -13,6 +13,7 @@
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -37,24 +38,23 @@
                     333 - 333 33 33
                 </div>
                 <div class="col-lg-8">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs mb-4">
                         <li class="nav-item">
-                            <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">CV</a>
+                            <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Curriculum Vitae</a>
                         </li>
                         <li class="nav-item">
                             <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Notifiche</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Modifica</a>
+                            <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Modifica Profilo</a>
                         </li>
                     </ul>
                     <div class="tab-content pb-3">
                         <div class="tab-pane active" id="profile">
-                            <h4 class="my-4">Curriculum Vitae</h4>
-                            <table class="table table-hover table-striped">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Anno</th>
+                                        <th scope="col">Periodo</th>
                                         <th scope="col">Ruolo</th>
                                         <th scope="col">Progetto</th>
                                         <th scope="col">Genere</th>
@@ -90,7 +90,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                                                                <td>
+                                        <td>
                                             1976
                                         </td>
                                         <td>
@@ -104,7 +104,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                                                                <td>
+                                        <td>
                                             1973
                                         </td>
                                         <td>
@@ -117,12 +117,38 @@
                                             Gangster - Dramma
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        
+                                        <td>
+                                            <div class="form-group">
+                                                <input class="form-control mb-2" type="number" placeholder="Dal">
+                                                <input class="form-control" type="number" placeholder="Al">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select class="form-control">
+                                                <option>Attore</option>
+                                                <option>Attrice</option>
+                                                <option>Regista</option>
+                                                <option>Direttore della Fotografia</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" type="text" placeholder="Nome">
+                                        </td>
+                                        <td>
+                                            <select multiple class="selectpicker form-control mb-2" data-live-search="true" title="Nessuno">
+                                                <option>Drammatico</option>
+                                                <option>Commedia</option>
+                                                <option>Horror</option>
+                                            </select>
+                                            <button type="button" class="btn red insert">Inserisci</button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="tab-pane" id="messages">
-                            <h4 class="my-4">Notifiche</h4>
                             <table class="table table-hover table-striped">
                                 <tbody>                                    
                                     <tr>
@@ -131,13 +157,12 @@
                                         </td>
                                         <td>
                                             Sei stato assegnato per il ruolo di <strong>Regista</strong> in <strong>Wolf of Wall Streets</strong>
-                                            </td>
+                                        </td>
                                     </tr>
                                 </tbody> 
                             </table>
                         </div>
                         <div class="tab-pane" id="edit">
-                            <h4 class="my-4">Modifica Profilo</h4>
                             <form role="form">
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Nome</label>
@@ -231,6 +256,7 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="js/scripts.js"></script>
         <script type="text/javascript">
             $(function () {

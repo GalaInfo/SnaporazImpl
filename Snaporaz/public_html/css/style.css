@@ -89,7 +89,7 @@ a, a:hover{
     text-align: center;
 }
 
-.project-thumb, .arrows{
+.project-thumb, .arrows, .insert{
     width: 100%;
 }
 
@@ -151,4 +151,12 @@ small{
 input[name="candidati"]{
     margin-bottom: 5px;
     width: inherit;
+}
+
+td .form-control[type="number"]{
+    width: 100px;
+}
+
+td strong{
+    color: #b70f0a;
 }
