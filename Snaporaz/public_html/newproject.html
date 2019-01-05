@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Snaporaz</title>
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+    </head>
+    <body>
+        <div id="navbar" class="fixed-top"></div>
+        <div class="container">
+            <h1 class="my-4">Nuovo Progetto</h1>
+            <div class="row my-4 justify-content-center">
+                <div class="col-lg-12">                          
+                    <img class="rounded project-thumb mb-2" src="img/Toro_scatenato.JPG" alt="project_thumbnail">
+                    <form>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label>Titolo</label>
+                                <input type="text" class="form-control" id="projectTitle" placeholder="Titolo del progetto">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Genere</label>
+                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                    <option>Drammatico</option>
+                                    <option>Commedia</option>
+                                    <option>Horror</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label>Immagine Profilo</label>
+                                <input class="form-control" type="file">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label>Trama</label>
+                                <textarea class="md-textarea form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2">Abilita Donazioni</label>
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="form-check-input" id="check" checked>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="money">
+                            <div class="col-sm-6">
+                                <label>Obiettivo</label>
+                                <input class="form-control" type="number" placeholder="Budget">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Ricompense</label>
+                                <textarea class="md-textarea form-control" rows="3" placeholder=" 10€ - DVD &#10 15€ - DVD + Poster &#10 ..."></textarea>
+                            </div>
+                        </div>
+                        <button type="button" class="btn red arrows col-sm-3 float-right"><span>Crea </span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="py-5 red">
+            <div class="container">
+                <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#navbar").load("nav.html");
+                $("#check").click(function () {
+                    if ($(this).is(':checked')) {
+                        $("#money").slideDown(500);
+                    } else {
+                        $("#money").slideUp(500);
+                    }
+                });
+            });
+        </script>
+    </body>

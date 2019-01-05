@@ -14,6 +14,7 @@
         <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -41,6 +42,14 @@
                                             <div class="col-sm-6">
                                                 <label>Password</label>
                                                 <input type="password" class="form-control" id="projectSurname">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <button class="btn btn-google insert" type="submit"><i class="fab fa-google mr-2"></i> Accedi con Google</button>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <button class="btn btn-facebook insert" type="submit"><i class="fab fa-facebook-f mr-2"></i> Accedi con Facebook</button>
                                             </div>
                                         </div>
                                         <button type="button" class="btn red arrows col-sm-3 float-right"><span>Accedi </span></button>
@@ -80,14 +89,19 @@
                                                 <input type="text" class="form-control" placeholder="Numero di telefono">
                                             </div>
                                             <div class="col-sm-6">
-                                                <label>Immagine Profilo</label>
-                                                <input class="form-control" type="file">
-                                            </div>
+                                                <label>Indirizzo</label>
+                                                <input class="form-control" type="text" value="" placeholder="Via">
+                                            </div> 
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6">
-                                                <label>Indirizzo</label>
-                                                <input class="form-control" type="text" value="" placeholder="Via">
+                                                <label>Ruoli</label>
+                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                    <option>Attore</option>
+                                                    <option>Attrice</option>
+                                                    <option>Regista</option>
+                                                    <option>Direttore della Fotografia</option>
+                                                </select>
                                             </div>
                                             <div class="col-sm-6 row">
                                                 <div class="col-sm-6">
@@ -101,17 +115,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-6">
-                                                <label>Ruoli</label>
-                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
-                                                    <option>Attore</option>
-                                                    <option>Attrice</option>
-                                                    <option>Regista</option>
-                                                    <option>Direttore della Fotografia</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Password</label>
                                                 <input type="password" class="form-control" id="inputAddressLine2">

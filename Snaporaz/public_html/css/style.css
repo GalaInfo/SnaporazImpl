@@ -160,3 +160,13 @@ td .form-control[type="number"]{
 td strong{
     color: #b70f0a;
 }
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
