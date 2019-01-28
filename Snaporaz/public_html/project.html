@@ -253,8 +253,25 @@
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script type="text/javascript">
+
+            //ritorna il valore del parametro sParam nell'URL se esiste, undefined altrimenti
+            function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
+                }
+            };
             $(function () {
                 $("#navbar").load("nav.html");
+                //window.alert(getUrlParameter("movie"));
             });
         </script>
     </body>
