@@ -10,10 +10,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+        <link href="../css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        <script src="../js/navbar.js"></script>
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -46,31 +54,22 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Genere</label>
-                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                <select class="selectpicker form-control" data-live-search="true" title="Qualunque">
                                                     <option>Drammatico</option>
                                                     <option>Commedia</option>
                                                     <option>Horror</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <label>Dal</label>
-                                                <input type="number" class="form-control" id="projectYearfrom" placeholder="Anno">
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <label>Al</label>
-                                                <input type="number" class="form-control" id="projectYearto" placeholder="Anno">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Ha collaborato</label>
                                                 <input type="text" class="form-control" id="projectCollab" placeholder="Cognome collaboratore">
                                             </div>
+                                        </div>
+                                        <div class="form-group row">                                            
                                             <div class="col-sm-3">
                                                 <label>Ordinati per</label>
                                                 <select class="selectpicker form-control">
                                                     <option>Titolo</option>
-                                                    <option>Anno</option>
                                                     <option>Donazioni</option>
                                                 </select>
                                             </div>
@@ -198,7 +197,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Ruolo</label>
-                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                <select class="selectpicker form-control" data-live-search="true" title="Qualunque">
                                                     <option>Attore</option>
                                                     <option>Attrice</option>
                                                     <option>Regista</option>
@@ -221,7 +220,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Genere</label>
-                                                <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                <select class="selectpicker form-control" data-live-search="true" title="Qualunque">
                                                     <option>Western</option>
                                                     <option>Azione</option>
                                                     <option>Drammatico</option>
@@ -283,15 +282,4 @@
                 <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
             </div>
         </footer>
-
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#navbar").load("nav.html");
-            });
-        </script>
     </body>

@@ -11,10 +11,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/open-iconic-bootstrap.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+        <link href="../css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="../js/bootstrap.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        <script src="../js/navbar.js"></script>
     </head>
 
     <body>
@@ -245,35 +253,6 @@
             </div>
             <!-- /.container -->
         </footer>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-        <script type="text/javascript">
-
-            //ritorna il valore del parametro sParam nell'URL se esiste, undefined altrimenti
-            function getUrlParameter(sParam) {
-                var sPageURL = window.location.search.substring(1),
-                        sURLVariables = sPageURL.split('&'),
-                        sParameterName,
-                        i;
-
-                for (i = 0; i < sURLVariables.length; i++) {
-                    sParameterName = sURLVariables[i].split('=');
-
-                    if (sParameterName[0] === sParam) {
-                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-                    }
-                }
-            };
-            $(function () {
-                $("#navbar").load("nav.html");
-                //window.alert(getUrlParameter("movie"));
-            });
-        </script>
     </body>
 
 </html>
