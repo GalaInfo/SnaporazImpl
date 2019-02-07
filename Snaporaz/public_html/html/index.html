@@ -18,6 +18,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="../js/navbar.js"></script>
+        <script src="../js/index.js"></script>
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -64,165 +65,20 @@
 
         <div class="container">
 
-            <!-- Page Heading -->
-            <h1 class="my-4"><a href="#">Progetti più finanziati »</a>
-            </h1>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="img/orange.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="project.html">Arancia Meccanica</a>
-                            </h4>
-                            <p class="card-text">Dramma/Mistero</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="project.html"><img class="card-img-top" src="img/Toro_scatenato.JPG" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="project.html"> Toro Scatenato</a>
-                            </h4>
-                            <p class="card-text">Sportivo/Dramma</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="img/requiem.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Requiem for a Dream</a>
-                            </h4>
-                            <p class="card-text">Dramma</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1 class="my-4"><a href="#">Progetti più finanziati »</a></h1>
+            <div class="row" id="funded"></div>
 
-            <h1 class="my-4"><a href="#">Progetti vicini all'obbiettivo »</a>
-            </h1>
+            <h1 class="my-4"><a href="#">Progetti vicini all'obbiettivo »</a></h1>
+            <div class="row" id="close"></div>
 
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="project.html"><img class="card-img-top" src="https://images8.alphacoders.com/461/461502.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="project.html">Il Padrino</a>
-                            </h4>
-                            <p class="card-text">Dramma/Giallo</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://www.cinetecadibologna.it/files/festival/Sotto_le_stelle/2015/quartopotere.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Quarto Potere</a>
-                            </h4>
-                            <p class="card-text">Dramma/Mistero</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://wallpapercave.com/wp/ChkK6nB.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">I Sette Samurai</a>
-                            </h4>
-                            <p class="card-text">Dramma/Azione</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h1 class="my-4"><a href="#">Progetti aggiunti di recente »</a>
-            </h1>
-
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="project.html"><img class="card-img-top" src="http://lor66yzmui-flywheel.netdna-ssl.com/wp-content/uploads/2017/02/Swiss-Army-Man-Vinyl-Header_1050_591_81_s_c1.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="project.html">Swiss Army Man</a>
-                            </h4>
-                            <p class="card-text">Commedia</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="project.html"> <img class="card-img-top" src="https://images4.alphacoders.com/101/thumb-1920-10174.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="project.html">Pulp Fiction</a>
-                            </h4>
-                            <p class="card-text">Azione/Commedia</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 portfolio-item">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="https://images7.alphacoders.com/689/thumb-1920-689244.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">2001: Odissea nello Spazio</a>
-                            </h4>
-                            <p class="card-text">Fantascienza/Mistero</p>
-                            <div class="progress">
-                                <div class="progress-bar red" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            90000 € / 100000 €
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1 class="my-4"><a href="#">Progetti aggiunti di recente »</a></h1>
+            <div class="row" id="recent"></div>
 
         </div>
         <footer class="py-5 red">
             <div class="container">
                 <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
             </div>
-            <!-- /.container -->
         </footer>
     </body>
 </html>
