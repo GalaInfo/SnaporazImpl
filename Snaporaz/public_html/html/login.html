@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="google-signin-client_id" content="617542772314-keo0t31kssvhk31g3ghjhho21m8s53cm.apps.googleusercontent.com">
         <title>Snaporaz</title>
 
         <meta name="description" content="">
@@ -16,11 +16,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
         <link href="../css/style.css" rel="stylesheet">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="../js/navbar.js"></script>
     </head>
     <body>
@@ -54,6 +55,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3">
                                                 <button class="btn btn-google insert" type="submit"><i class="fab fa-google mr-2"></i> Accedi con Google</button>
+                                                <div class="g-signin2" data-onsuccess="onSignIn">Accedi con elgooG</div>
                                             </div>
                                         </div>
                                     </form>
@@ -148,4 +150,16 @@
                 <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
             </div>
         </footer>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                console.log (googleUser.getAuthResponse().id_token);
+            }
+        </script>
+
+        }
     </body>
