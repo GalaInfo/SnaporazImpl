@@ -9,7 +9,8 @@
 
         <meta name="description" content="">
         <meta name="author" content="">
-
+        
+        <link rel="icon" href="../img/icona.png" type="image/png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
@@ -20,29 +21,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="../js/navbar.js"></script>
+        <script src="../js/user.js"></script>
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
         <div class="container">
             <div class="row my-4">
-                <div class="col-lg-4 text-center">
-                    <img src="https://consequenceofsound.files.wordpress.com/2016/01/martin-scorsese_0.jpg?quality=80&w=807" class="rounded-circle img-fluid d-block mx-auto" alt="avatar">
-                    <h4 class="mt-4">Martin</h4>
-                    <hr>
-                    <h4>Scorsese</h4>
-                    <hr>
-                    Regista
-                    <hr>
-                    martin.scorsese@gmail.com
-                    <hr>
-                    17 novembre 1942
-                    <hr>
-                    76 anni
-                    <hr>
-                    California
-                    <hr>
-                    333 - 333 33 33
-                </div>
+                <div class="col-lg-4 text-center" id="usercol"></div>
                 <div class="col-lg-8">
                     <ul class="nav nav-tabs mb-4">
                         <li class="nav-item">
@@ -63,65 +48,8 @@
                                         <th scope="col">Genere</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="experiences">
                                     <tr>
-                                        <td>
-                                            2009 - 2010
-                                        </td>
-                                        <td>
-                                            Regista
-                                        </td>
-                                        <td>
-                                            Shutter Island
-                                        </td>
-                                        <td>
-                                            Mistero - Dramma
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            1979 - 1980
-                                        </td>
-                                        <td>
-                                            Regista
-                                        </td>
-                                        <td>
-                                            Toro Scatenato
-                                        </td>
-                                        <td>
-                                            Sportivo - Dramma
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            1976 - 1976
-                                        </td>
-                                        <td>
-                                            Regista
-                                        </td>
-                                        <td>
-                                            Taxi Driver
-                                        </td>
-                                        <td>
-                                            Dramma
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            1973 - 1973
-                                        </td>
-                                        <td>
-                                            Regista
-                                        </td>
-                                        <td>
-                                            Mean Streets
-                                        </td>
-                                        <td>
-                                            Gangster - Dramma
-                                        </td>
-                                    </tr>
-                                    <tr>
-
                                         <td>
                                             <div class="form-group">
                                                 <input class="form-control mb-2" type="number" placeholder="Dal">

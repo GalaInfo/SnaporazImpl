@@ -1,33 +1,40 @@
+//ritorna il valore del parametro sParam nell'URL se esiste, undefined altrimenti
+function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+}
+
 function buildProjectThumbnail(data) {
-    var title;
-    var genres;
-    var min;
-    var actual;
-    var image;
+    var title = "Titolo";
+    var genres = "Genere";
+    var min = 0;
+    var actual = 0;
+    var image = "../img/project_placeholder.png";
+
     if (data.title) {
         title = data.title;
-    } else {
-        title = "Titolo";
     }
     if (data.genres) {
         genres = data.genres;
-    } else {
-        genres = "Genere";
     }
     if (data.min !== null) {
         min = data.min;
-    } else {
-        min = 0;
     }
     if (data.actual !== null) {
         actual = data.actual;
-    } else {
-        actual = 0;
     }
     if (data.image) {
         image = data.image;
-    } else {
-        image = "../img/project_placeholder.png";
     }
     const template = `
                     <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -49,35 +56,26 @@ function buildProjectThumbnail(data) {
 }
 
 function buildProject(data) {
-    var title;
-    var genres;
-    var min;
-    var actual;
-    var image;
+    var title = "Titolo";
+    var genres = "Genere";
+    var min = 0;
+    var actual = 0;
+    var image = "../img/project_placeholder.png";
+
     if (data.title) {
         title = data.title;
-    } else {
-        title = "Titolo";
     }
     if (data.genres) {
         genres = data.genres;
-    } else {
-        genres = "Genere";
     }
     if (data.min !== null) {
         min = data.min;
-    } else {
-        min = 0;
     }
     if (data.actual !== null) {
         actual = data.actual;
-    } else {
-        actual = 0;
     }
     if (data.image) {
         image = data.image;
-    } else {
-        image = "../img/project_placeholder.png";
     }
     const template = `
             <h1 class="mt-4">${title}</h1> 
@@ -116,29 +114,22 @@ function buildProject(data) {
 }
 
 function buildCastThumbnail(data) {
-    var name;
-    var role;
-    var character;
-    var image;
+    var name = "Nome";
+    var role = "Ruolo";
+    var character = "Personaggio";
+    var image = "../img/user_placeholder.png";
+
     if (data.name) {
         name = data.name;
-    } else {
-        name = "Nome";
     }
     if (data.role) {
         role = data.role;
-    } else {
-        role = "Ruolo";
     }
     if (data.character) {
         character = data.character;
-    } else {
-        character = "Personaggio";
     }
     if (data.image) {
         image = data.image;
-    } else {
-        image = "../img/user_placeholder.png";
     }
     const template = `
                     <div class="col-lg-2 col-sm-6 text-center mb-4">
@@ -151,77 +142,97 @@ function buildCastThumbnail(data) {
 }
 
 function buildUser(data) {
-    var name;
-    var surname;
-    var roles;
-    var mail;
-    var birth;
-    var age;
-    var country;
-    var phone;
-    var image;
+    var name = "Nome";
+    var surname = "Cognome";
+    var roles = "Ruolo";
+    var mail = "Email";
+    var birth = "Data di nascita";
+    var age = "Età";
+    var country = "Nazione";
+    var phone = "Telefono";
+    var image = "../img/user_placeholder.png";
+    
     if (data.name) {
         name = data.name;
-    } else {
-        name = "Nome";
     }
     if (data.surname) {
         surname = data.surname;
-    } else {
-        surname = "Cognome";
     }
     if (data.roles) {
         roles = data.roles;
-    } else {
-        roles = "Ruoli";
     }
     if (data.mail) {
         mail = data.mail;
-    } else {
-        mail = "Email";
     }
     if (data.birth) {
         birth = data.birth;
-    } else {
-        birth = "Data di nascita";
     }
     if (data.age) {
         age = data.age;
-    } else {
-        age = "età";
     }
     if (data.country) {
         country = data.country;
-    } else {
-        country = "Paese di residenza";
     }
     if (data.phone) {
         phone = data.phone;
-    } else {
-        phone = "Numero di telefono";
     }
     if (data.image) {
         image = data.image;
-    } else {
-        image = "Numero di telefono";
     }
+
     const template = `
-                    <img src="https://consequenceofsound.files.wordpress.com/2016/01/martin-scorsese_0.jpg?quality=80&w=807" class="rounded-circle img-fluid d-block mx-auto" alt="avatar">
-                    <h4 class="mt-4">Martin</h4>
+                    <img src=${image} class="rounded-circle img-fluid d-block mx-auto" alt="avatar">
+                    <h4 class="mt-4">${name}</h4>
                     <hr>
-                    <h4>Scorsese</h4>
+                    <h4>${surname}</h4>
                     <hr>
-                    Regista
+                    ${roles}
                     <hr>
-                    martin.scorsese@gmail.com
+                    ${mail}
                     <hr>
-                    17 novembre 1942
+                    ${birth}
                     <hr>
-                    76 anni
+                    ${age}
                     <hr>
-                    California
+                    ${country}
                     <hr>
-                    333 - 333 33 33`;
+                    ${phone}`;
+    return template;
+}
+
+function buildUserExp(data) {
+    var title = "Titolo";
+    var genres = "Genere";
+    var date = "Data";
+    var role = "Ruolo";
+    
+    if (data.title) {
+        title = data.title;
+    }
+    if (data.genres) {
+        genres = data.genres;
+    }
+    if (data.roles) {
+        date = data.date;
+    }
+    if (data.role) {
+        role = data.role;
+    }
+    const template = `                                    
+                    <tr>
+                        <td>
+                            ${date}
+                        </td>
+                        <td>
+                            ${role}
+                        </td>
+                        <td>
+                            ${title}
+                        </td>
+                        <td>
+                            ${genres}
+                        </td>
+                    </tr>`;
     return template;
 }
 
