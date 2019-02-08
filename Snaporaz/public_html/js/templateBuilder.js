@@ -115,4 +115,114 @@ function buildProject(data) {
     return template;
 }
 
+function buildCastThumbnail(data) {
+    var name;
+    var role;
+    var character;
+    var image;
+    if (data.name) {
+        name = data.name;
+    } else {
+        name = "Nome";
+    }
+    if (data.role) {
+        role = data.role;
+    } else {
+        role = "Ruolo";
+    }
+    if (data.character) {
+        character = data.character;
+    } else {
+        character = "Personaggio";
+    }
+    if (data.image) {
+        image = data.image;
+    } else {
+        image = "../img/user_placeholder.png";
+    }
+    const template = `
+                    <div class="col-lg-2 col-sm-6 text-center mb-4">
+                        <a href="user.html?id=${data.user}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
+                        <h4>${name}</h4>
+                        </a>
+                        <p><strong>${role}</strong><br>${character}</p>
+                    </div>`;
+    return template;
+}
+
+function buildUser(data) {
+    var name;
+    var surname;
+    var roles;
+    var mail;
+    var birth;
+    var age;
+    var country;
+    var phone;
+    var image;
+    if (data.name) {
+        name = data.name;
+    } else {
+        name = "Nome";
+    }
+    if (data.surname) {
+        surname = data.surname;
+    } else {
+        surname = "Cognome";
+    }
+    if (data.roles) {
+        roles = data.roles;
+    } else {
+        roles = "Ruoli";
+    }
+    if (data.mail) {
+        mail = data.mail;
+    } else {
+        mail = "Email";
+    }
+    if (data.birth) {
+        birth = data.birth;
+    } else {
+        birth = "Data di nascita";
+    }
+    if (data.age) {
+        age = data.age;
+    } else {
+        age = "età";
+    }
+    if (data.country) {
+        country = data.country;
+    } else {
+        country = "Paese di residenza";
+    }
+    if (data.phone) {
+        phone = data.phone;
+    } else {
+        phone = "Numero di telefono";
+    }
+    if (data.image) {
+        image = data.image;
+    } else {
+        image = "Numero di telefono";
+    }
+    const template = `
+                    <img src="https://consequenceofsound.files.wordpress.com/2016/01/martin-scorsese_0.jpg?quality=80&w=807" class="rounded-circle img-fluid d-block mx-auto" alt="avatar">
+                    <h4 class="mt-4">Martin</h4>
+                    <hr>
+                    <h4>Scorsese</h4>
+                    <hr>
+                    Regista
+                    <hr>
+                    martin.scorsese@gmail.com
+                    <hr>
+                    17 novembre 1942
+                    <hr>
+                    76 anni
+                    <hr>
+                    California
+                    <hr>
+                    333 - 333 33 33`;
+    return template;
+}
+
 

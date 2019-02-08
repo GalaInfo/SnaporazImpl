@@ -158,6 +158,9 @@
                 console.log('Image URL: ' + profile.getImageUrl());
                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                 console.log (googleUser.getAuthResponse().id_token);
+                $.post("http://localhost:42729/SnaporazSpring/login", {idTokenString: googleUser.getAuthResponse().id_token}, function(data){
+                    alert(data.id);
+                });
             }
         </script>
 
