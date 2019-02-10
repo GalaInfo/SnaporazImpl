@@ -7,6 +7,9 @@ $(function () {
                 const template = buildUserExp(v);
                 $("#experiences").append(template);
             });
+        }).fail(function () {
+            const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
+            $("#navbar").append(alert);
         });
     });
 });

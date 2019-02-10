@@ -5,9 +5,9 @@
     </button> <a class="navbar-left" href="index.html"><img src="../img/logo.png" class="logo" alt="Responsive image"></a>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <div class="input-group nav-search">
-            <input type="text" class="form-control" placeholder="Cerca progetto o persona">
+            <input type="text" class="form-control" placeholder="Cerca il titolo di un progetto" id="title">
             <div class="input-group-append">
-                <button class="btn search-btn" type="button"><span class="oi oi-magnifying-glass"></span></button>
+                <button class="btn search-btn" type="button" onclick="search()"><span class="oi oi-magnifying-glass"></span></button>
             </div>
         </div>
 
@@ -31,6 +31,7 @@
         </ul>
     </div>
 </nav>
+<script src="../js/navbar.js"></script>
 <script>
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
@@ -39,11 +40,4 @@
         });
     }
 </script>
-<!--
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Devi effettuare il <strong>login</strong> per accedere a questa funzionalità
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
--->
+

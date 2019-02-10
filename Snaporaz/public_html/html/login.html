@@ -22,7 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="../js/navbar.js"></script>
+        <script src="../js/navbarLoader.js"></script>
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3">
-                                                <button class="btn btn-google insert" type="submit"><i class="fab fa-google mr-2"></i> Accedi con Google</button>
+                                                <button class="btn btn-google insert" type="button" onclick="a()"><i class="fab fa-google mr-2"></i> Accedi con Google</button>
                                                 <div class="g-signin2" data-onsuccess="onSignIn">Accedi con elgooG</div>
                                             </div>
                                         </div>
@@ -160,6 +160,11 @@
                 console.log (googleUser.getAuthResponse().id_token);
                 $.post("http://localhost:42729/SnaporazSpring/login", {idTokenString: googleUser.getAuthResponse().id_token}, function(data){
                     alert(data.id);
+                });
+            }
+            function a(){
+                $.get("http://localhost:42729/SnaporazSpring/info", function(data){
+                    console.log(data);
                 });
             }
         </script>

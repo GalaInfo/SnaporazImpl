@@ -8,9 +8,17 @@ $(function () {
                 $("#related").append(template);
             });
             $.each(data.parts, function (i, v) {
-                const template = buildCastThumbnail(v);
-                $("#castrow").append(template);
+                if (v.character) {
+                    const template = buildCastThumbnail(v);
+                    $("#castrow").append(template);
+                } else {
+                    const template = buildUserThumbnail(v);
+                    $("#trouperow").append(template);
+                }
             });
+        }).fail(function () {
+            const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
+            $("#navbar").append(alert);
         });
     });
 });

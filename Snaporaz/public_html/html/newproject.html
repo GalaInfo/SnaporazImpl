@@ -21,69 +21,63 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-        <script src="../js/navbar.js"></script>
+        <script src="../js/navbarLoader.js"></script>
         <script src="../js/newproject.js"></script>
     </head>
 
     <body>
         <div id="navbar" class="fixed-top"></div>
-        <!-- Page Content -->
+
         <div class="container">
-
-            <!-- Portfolio Item Heading -->
-            <h1 class="my-4">Nuovo Progetto</h1> 
-            <div class="form-group row">
-                <div class="col-sm-6">
-                    <label>Titolo</label>
-                    <input type="text" class="form-control" id="projectTitle" placeholder="Titolo del progetto">
+            <h1 class="my-4">Nuovo Progetto</h1>
+            <form id="newproject">
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <label>Titolo</label>
+                        <input type="text" class="form-control" name="title" placeholder="Titolo del progetto">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Genere</label>
+                        <select multiple class="selectpicker form-control" name="genres" data-live-search="true" title="Qualunque">
+                            <option>Drammatico</option>
+                            <option>Commedia</option>
+                            <option>Horror</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label>Genere</label>
-                    <select multiple class="selectpicker form-control" data-live-search="true" title="Qualunque">
-                        <option>Drammatico</option>
-                        <option>Commedia</option>
-                        <option>Horror</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Portfolio Item Row -->
-            <div class="row form-group">
-                <div class="col-md-8">
-                    <img class="rounded project-thumb" src="../img/project_placeholder.png" alt="project_thumbnail" id="thumbnail">
-                    <div class="input-group mt-2">
-                        <input type="text" class="form-control" placeholder="URL Immagine" id="url-img">
-                        <div class="input-group-append">
-                            <button class="btn red" type="button" id="load-img"><span class="oi oi-reload"></span></button>
+                <div class="row form-group">
+                    <div class="col-md-8">
+                        <img class="rounded project-thumb" src="../img/project_placeholder.png" alt="project_thumbnail" id="thumbnail">
+                        <div class="input-group mt-2">
+                            <input type="text" class="form-control" placeholder="URL Immagine" id="url-img" name="img">
+                            <div class="input-group-append">
+                                <button class="btn red" type="button" id="load-img"><span class="oi oi-reload"></span></button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <label>Trama</label>
-                    <textarea class="md-textarea form-control mb-2" rows="6"></textarea>
-                    <div class="custom-control custom-checkbox mb-2">
-                        <input type="checkbox" class="custom-control-input" id="check" checked>
-                        <label class="custom-control-label" for="check">Abilita Donazioni</label>
-                    </div>
-                    <div id="money">
-                        <label>Obiettivo</label>
-                        <input class="form-control mb-2" type="number" placeholder="Budget">
-                        <label>Ricompense</label>
-                        <textarea class="md-textarea form-control mb-2" rows="4" placeholder=" 10€ - DVD &#10 15€ - DVD + Poster &#10 ..."></textarea>
-                    </div>
-                    <button type="button" class="btn red arrows"><span>Crea </span></button>
+                    <div class="col-md-4">
+                        <label>Trama</label>
+                        <textarea class="md-textarea form-control mb-2" rows="6" name="plot"></textarea>
+                        <div class="custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="custom-control-input" id="check" checked>
+                            <label class="custom-control-label" for="check">Abilita Donazioni</label>
+                        </div>
+                        <div id="money">
+                            <label>Obiettivo</label>
+                            <input class="form-control mb-2" type="number" name="objective" placeholder="Budget">
+                            <label>Ricompense</label>
+                            <textarea class="md-textarea form-control mb-2" rows="4" placeholder=" 10€ - DVD &#10 15€ - DVD + Poster &#10 ..." name="rewards"></textarea>
+                        </div>
+                        <button type="submit" class="btn red arrows"><span>Crea </span></button>
+                    </div>                
                 </div>
-            </div>
+            </form>
         </div>
-        <!-- /.container -->
-
-        <!-- Footer -->
         <footer class="py-5 red">
             <div class="container">
                 <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
             </div>
-            <!-- /.container -->
         </footer>
     </body>
 

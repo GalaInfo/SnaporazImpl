@@ -14,6 +14,17 @@ function getUrlParameter(sParam) {
     }
 }
 
+function buildAlert(msg) {
+    const template = `
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <span>${msg}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>`;
+    return template;
+}
+
 function buildProjectThumbnail(data) {
     var title = "Titolo";
     var genres = "Genere";
@@ -38,20 +49,21 @@ function buildProjectThumbnail(data) {
     }
     const template = `
                     <div class="col-lg-4 col-sm-6 portfolio-item">
-                        <div class="card h-100" id="2">
-                            <a href="#"><img class="card-img-top" src=${image} alt="locandina"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                <a href="project.html?id=${data.id}">${title}</a>
-                                </h4>
-                                <p class="card-text">${genres}</p>
-                                <div class="progress">
-                                <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        <a href="project.html?id=${data.id}">
+                            <div class="card h-100" id="2">
+                                <img class="card-img-top" src=${image} alt="locandina">
+                                <div class="card-body">
+                                    <h4 class="card-title">${title}</h4>
+                                    <p class="card-text">${genres}</p>
+                                    <div class="progress">
+                                    <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    ${actual} € / ${min} €
                                 </div>
-                                ${actual} € / ${min} €
                             </div>
-                        </div>
-                    </div>`;
+                        <a href="project.html?id=${data.id}">
+                    </div>
+                   `;
     return template;
 }
 
@@ -113,14 +125,50 @@ function buildProject(data) {
     return template;
 }
 
+function buildUserThumbnail(data) {
+    var id = data.id;
+    var name = "Nome";
+    var surname = "Cognome";
+    var role = "Ruolo";
+    var image = "../img/user_placeholder.png";
+
+    if (data.hasOwnProperty('user')) {
+        id = data.user;
+    }
+    if (data.name) {
+        name = data.name;
+    }
+    if (data.surname) {
+        surname = data.surname;
+    }
+    if (data.roles) {
+        role = data.roles;
+    }
+    if (data.image) {
+        image = data.image;
+    }
+    const template = `
+                    <div class="col-lg-2 col-sm-6 text-center mb-4">
+                        <a href="user.html?id=${id}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
+                        <h4>${name} ${surname}</h4>
+                        </a>
+                        <p><strong>${role}</strong>
+                    </div>`;
+    return template;
+}
+
 function buildCastThumbnail(data) {
     var name = "Nome";
+    var surname = "Cognome";
     var role = "Ruolo";
     var character = "Personaggio";
     var image = "../img/user_placeholder.png";
 
     if (data.name) {
         name = data.name;
+    }
+    if (data.surname) {
+        surname = data.surname;
     }
     if (data.role) {
         role = data.role;
@@ -134,7 +182,7 @@ function buildCastThumbnail(data) {
     const template = `
                     <div class="col-lg-2 col-sm-6 text-center mb-4">
                         <a href="user.html?id=${data.user}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
-                        <h4>${name}</h4>
+                        <h4>${name} ${surname}</h4>
                         </a>
                         <p><strong>${role}</strong><br>${character}</p>
                     </div>`;
@@ -151,7 +199,7 @@ function buildUser(data) {
     var country = "Nazione";
     var phone = "Telefono";
     var image = "../img/user_placeholder.png";
-    
+
     if (data.name) {
         name = data.name;
     }
@@ -205,7 +253,7 @@ function buildUserExp(data) {
     var genres = "Genere";
     var date = "Data";
     var role = "Ruolo";
-    
+
     if (data.title) {
         title = data.title;
     }

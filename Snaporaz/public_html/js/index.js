@@ -16,6 +16,9 @@ $(function () {
                 const template = buildProjectThumbnail(v);
                 $("#recent").append(template);
             });
+        }).fail(function(){
+            const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
+            $("#navbar").append(alert);
         });
     });
 });

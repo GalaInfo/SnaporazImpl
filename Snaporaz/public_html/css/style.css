@@ -157,12 +157,11 @@ td strong{
     color: #b70f0a;
 }
 
-.btn-google {
-    color: white;
-    background-color: #ea4335;
+.spinner-border{
+    color: #b70f0a;
+    width: 3rem;
+    height: 3rem;
+    display: none;
 }
 
-.btn-facebook {
-    color: white;
-    background-color: #3b5998;
-}
+

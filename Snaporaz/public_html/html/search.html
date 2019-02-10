@@ -15,12 +15,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
         <link href="../css/style.css" rel="stylesheet">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-        <script src="../js/navbar.js"></script>
+        <script src="../js/navbarLoader.js"></script>
         <script src="../js/search.js"></script>
     </head>
     <body>
@@ -86,27 +86,30 @@
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <div class="row" id="projectsrow"></div>
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border" role="status"></div>
+                                <div class="row" id="projectslist"></div>
+                            </div>
                         </div>
 
                         <div class="tab-pane" id="people">
                             <div class="row my-4">
                                 <div class="col-md-12 mx-auto">
-                                    <form>
+                                    <form id="usersearch">
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" id="peopleName" placeholder="Nome">
+                                                <input type="text" class="form-control" name="username" placeholder="Nome">
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Cognome</label>
-                                                <input type="text" class="form-control" id="peopleSurname" placeholder="Cognome">
+                                                <input type="text" class="form-control" name="usersurame" placeholder="Cognome">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Ruolo</label>
-                                                <select class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                <select class="selectpicker form-control" name="userrole" data-live-search="true" title="Qualunque">
                                                     <option>Attore</option>
                                                     <option>Attrice</option>
                                                     <option>Regista</option>
@@ -115,21 +118,21 @@
                                             </div>
                                             <div class="col-sm-3">
                                                 <label>Età Minima</label>
-                                                <input type="number" class="form-control" id="inputState" placeholder="Età Minima">
+                                                <input type="number" class="form-control" name="minage" placeholder="Età Minima">
                                             </div>
                                             <div class="col-sm-3">
                                                 <label>Età Massima</label>
-                                                <input type="number" class="form-control" id="inputPostalCode" placeholder="Età Massima">
+                                                <input type="number" class="form-control" name="maxage" placeholder="Età Massima">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Ha partecipato</label>
-                                                <input type="text" class="form-control" id="inputAddressLine2" placeholder="Titolo progetto">
+                                                <input type="text" class="form-control" name="userproject" placeholder="Titolo progetto">
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Genere</label>
-                                                <select class="selectpicker form-control" data-live-search="true" title="Qualunque">
+                                                <select class="selectpicker form-control" name="usergenre" data-live-search="true" title="Qualunque">
                                                     <option>Western</option>
                                                     <option>Azione</option>
                                                     <option>Drammatico</option>
@@ -139,46 +142,28 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-3">
-                                                <label>Ordinati per</label>
-                                                <select class="selectpicker form-control">
+                                                <label >Ordinati per</label>
+                                                <select class="selectpicker form-control" name="userorder">
                                                     <option>Cognome</option>
                                                     <option>Età</option>
                                                 </select>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label>Ordine</label>
-                                                <select class="selectpicker form-control">
+                                                <select class="selectpicker form-control" name="userasc">
                                                     <option>Crescente</option>
                                                     <option>Decrescente</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn red arrows col-sm-3 float-right"><span>Cerca </span></button>
+                                        <button type="submit" class="btn red arrows col-sm-3 float-right"><span>Cerca </span></button>
                                     </form>
                                 </div>
                             </div>
                             <hr class="my-4">
-                            <div class="row">
-                                <div class="col-lg-2 col-sm-6 text-center mb-4">
-                                    <img class="rounded-circle img-fluid d-block mx-auto" src="data:image/jpeg;base64,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" alt="user_thumbnail">
-                                    <h4>Robert De Niro</h4>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 text-center mb-4">
-                                    <img class="rounded-circle img-fluid d-block mx-auto" src="https://www.azquotes.com/public/pictures/authors/c5/71/c5719d08fd6b5709f552c50c5cf95a1d/55af268c4015e_cathy_moriarty.jpg" alt="user_thumbnail">
-                                    <h4>Cathy Moriarty</h4>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 text-center mb-4">
-                                    <img class="rounded-circle img-fluid d-block mx-auto" src="https://mediamass.net/jdd/public/documents/celebrities/731.jpg" alt="user_thumbnail">
-                                    <h4>Joe Pesci</h4>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 text-center mb-4">
-                                    <img class="rounded-circle img-fluid d-block mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZakgSihcaUdQgHCyXL1kOPM3nejsFq9I0_L8iZxlTpQboKIaY" alt="user_thumbnail">
-                                    <h4>Frank Vincent</h4>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 text-center mb-4">
-                                    <img class="rounded-circle img-fluid d-block mx-auto" src="https://celebritypictures.wiki/thumbs/0170225/0170225_1.jpeg" alt="user_thumbnail">
-                                    <h4>Nicholas Colasanto</h4>
-                                </div>
+                            <div class="d-flex justify-content-center">
+                                    <div class="spinner-border" role="status"></div>
+                                <div class="row" id="userslist"></div>
                             </div>
                         </div>
                     </div>
