@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="google-signin-client_id" content="617542772314-keo0t31kssvhk31g3ghjhho21m8s53cm.apps.googleusercontent.com">
+        
         <title>Snaporaz</title>
 
         <meta name="description" content="">
@@ -23,6 +24,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="../js/navbarLoader.js"></script>
+        <script src="../js/navbar.js"></script>
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -52,12 +54,11 @@
                                                 <input type="password" class="form-control" id="projectSurname">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
                                             <div class="col-sm-6 mb-3">
-                                                <button class="btn btn-google insert" type="button" onclick="a()"><i class="fab fa-google mr-2"></i> Accedi con Google</button>
-                                                <div class="g-signin2" data-onsuccess="onSignIn">Accedi con elgooG</div>
+                                                <button class="btn btn-google insert" type="button" onclick="a()"><i class="fab fa-google mr-2"></i></button>
+                                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
                                             </div>
-                                        </div>
+
                                     </form>
                                 </div>
                             </div>                  
@@ -150,7 +151,7 @@
                 <p class="m-0 text-center">Copyright &copy; Snaporaz™ 2019</p>
             </div>
         </footer>
-        <script>
+        <!--><script>
             function onSignIn(googleUser) {
                 var profile = googleUser.getBasicProfile();
                 console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -167,7 +168,7 @@
                     console.log(data);
                 });
             }
-        </script>
+        </script><-->
 
         }
     </body>

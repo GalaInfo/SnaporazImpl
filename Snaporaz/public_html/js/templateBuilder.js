@@ -70,8 +70,11 @@ function buildProjectThumbnail(data) {
 function buildProject(data) {
     var title = "Titolo";
     var genres = "Genere";
+    var prizes = "Nessuna ricompensa prevista";
     var min = 0;
     var actual = 0;
+    var donations = 0;
+    var deadline = 0;
     var image = "../img/project_placeholder.png";
 
     if (data.title) {
@@ -80,11 +83,20 @@ function buildProject(data) {
     if (data.genres) {
         genres = data.genres;
     }
+    if (data.prizes) {
+        prizes = data.prizes;
+    }
     if (data.min !== null) {
         min = data.min;
     }
     if (data.actual !== null) {
         actual = data.actual;
+    }
+    if (data.donations) {
+        donations = data.donations;
+    }
+    if (data.deadLine) {
+        deadline = data.deadLine;
     }
     if (data.image) {
         image = data.image;
@@ -103,12 +115,7 @@ function buildProject(data) {
                     <h3 class="my-3">Trama</h3>
                     <p>hhhhhh</p>
                     <h3 class="my-3">Ricompense</h3>
-                    <ul>
-                        <li><strong>10€</strong> - DVD omaggio</li>
-                        <li><strong>20€</strong> - Blu-Ray omaggio</li>
-                        <li><strong>50€</strong> - Poster autografato</li>
-                        <li><strong>500€</strong> - Ringraziamento nei titolo di coda</li>
-                    </ul>
+                    <ul>${prizes}</ul>
                 </div>
             </div>
             <div class="row my-3">
@@ -118,50 +125,52 @@ function buildProject(data) {
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="p-2"><strong>${actual} € / ${min} €</strong></div>
-                        <div class="p-2"><strong>1000 donazioni</strong></div>
-                        <div class="p-2"><strong>7 giorni rimanenti</strong></div>
+                        <div class="p-2"><strong>${donations} donazioni</strong></div>
+                        <div class="p-2"><strong>${deadline} giorni rimanenti</strong></div>
                     </div>
                 </div>`;
     return template;
 }
 
-function buildUserThumbnail(data) {
-    var id = data.id;
-    var name = "Nome";
-    var surname = "Cognome";
-    var role = "Ruolo";
-    var image = "../img/user_placeholder.png";
-
-    if (data.hasOwnProperty('user')) {
-        id = data.user;
-    }
-    if (data.name) {
-        name = data.name;
-    }
-    if (data.surname) {
-        surname = data.surname;
-    }
-    if (data.roles) {
-        role = data.roles;
-    }
-    if (data.image) {
-        image = data.image;
-    }
+function buildAddTroupe() {
     const template = `
-                    <div class="col-lg-2 col-sm-6 text-center mb-4">
-                        <a href="user.html?id=${id}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
-                        <h4>${name} ${surname}</h4>
-                        </a>
-                        <p><strong>${role}</strong>
-                    </div>`;
+            <div class="col-lg-2 col-sm-6 text-center mb-4">
+                <img class="rounded-circle img-fluid d-block mx-auto" src="../img/piu.png" alt="user_thumbnail">
+                <h4>Aggiungi Parte</h4>
+                <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="troupeselect"></select>
+                <button type="button" class="btn red arrows" onclick="troupeButton()"><span>Aggiungi </span></button>
+            </div>`;
     return template;
 }
 
-function buildCastThumbnail(data) {
+function buildAddCast() {
+    const template = `
+            <div class="col-lg-2 col-sm-6 text-center mb-4">
+                <img class="rounded-circle img-fluid d-block mx-auto" src="../img/piu.png" alt="user_thumbnail">
+                <h4>Aggiungi Parte</h4>
+                <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="castselect"></select>
+                <input type="text" class="form-control" id="character" placeholder="Personaggio">
+                <button type="button" class="btn red arrows" id="castbutton" onclick="castButton()"><span>Aggiungi </span></button>
+            </div>`;
+    return template;
+}
+
+function buildCandidacy(data){
+    const template = `                        
+                <div class="col-lg-2 col-sm-6 text-center mb-4">
+                    <img class="rounded-circle img-fluid d-block mx-auto" src="../img/hiring.png" alt="user_thumbnail">
+                    <h4>Posizione Aperta</h4>
+                    <p class="mb-1"><strong>${data.role}</strong><br>${data.character}</p>
+                    <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="troupecandidacy"></select>
+                    <button type="button" class="btn red arrows"><span>Assegna </span></button>
+                </div>`;
+    return template;
+}
+
+function buildUserThumbnail(data) {
     var name = "Nome";
     var surname = "Cognome";
     var role = "Ruolo";
-    var character = "Personaggio";
     var image = "../img/user_placeholder.png";
 
     if (data.name) {
@@ -173,18 +182,15 @@ function buildCastThumbnail(data) {
     if (data.role) {
         role = data.role;
     }
-    if (data.character) {
-        character = data.character;
-    }
     if (data.image) {
         image = data.image;
     }
     const template = `
-                    <div class="col-lg-2 col-sm-6 text-center mb-4">
+                    <div class="col-sm-2 text-center mb-4">
                         <a href="user.html?id=${data.user}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
                         <h4>${name} ${surname}</h4>
                         </a>
-                        <p><strong>${role}</strong><br>${character}</p>
+                        <p><strong>${role}</strong><br>${data.character}</p>
                     </div>`;
     return template;
 }
@@ -282,6 +288,18 @@ function buildUserExp(data) {
                         </td>
                     </tr>`;
     return template;
+}
+
+function buildSelect(data, defaultValue) {
+    var init;
+    if (defaultValue) {
+        init = `<option>${defaultValue}</option>`;
+    }
+    $.each(data, function (i, v) {
+        var opt = `<option>${v}</option>`;
+        init += opt;
+    });
+    return init;
 }
 
 

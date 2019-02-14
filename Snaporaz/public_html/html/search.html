@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id" content="617542772314-keo0t31kssvhk31g3ghjhho21m8s53cm.apps.googleusercontent.com">
 
         <title>Snaporaz</title>
 
@@ -54,11 +55,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Genere</label>
-                                                <select class="selectpicker form-control" data-live-search="true" name="projectgenre" title="Qualunque">
-                                                    <option>Drammatico</option>
-                                                    <option>Commedia</option>
-                                                    <option>Horror</option>
-                                                </select>
+                                                <select class="selectpicker form-control" data-live-search="true" name="projectgenre" id="projectgenre"></select>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Ha collaborato</label>
@@ -87,7 +84,7 @@
                             </div>
                             <hr class="my-4">
                             <div class="d-flex justify-content-center">
-                                <div class="spinner-border" role="status"></div>
+                                <div class="spinner-border" role="status" id="projectspinner"></div>
                                 <div class="row" id="projectslist"></div>
                             </div>
                         </div>
@@ -109,12 +106,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6">
                                                 <label>Ruolo</label>
-                                                <select class="selectpicker form-control" name="userrole" data-live-search="true" title="Qualunque">
-                                                    <option>Attore</option>
-                                                    <option>Attrice</option>
-                                                    <option>Regista</option>
-                                                    <option>Direttore della Fotografia</option>
-                                                </select>
+                                                <select class="selectpicker form-control" name="userrole" data-live-search="true" title="Qualunque"></select>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label>Età Minima</label>
@@ -132,12 +124,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <label>Genere</label>
-                                                <select class="selectpicker form-control" name="usergenre" data-live-search="true" title="Qualunque">
-                                                    <option>Western</option>
-                                                    <option>Azione</option>
-                                                    <option>Drammatico</option>
-                                                    <option>Musical</option>
-                                                </select>
+                                                <select class="selectpicker form-control" name="usergenre" data-live-search="true" title="Qualunque"></select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -162,7 +149,7 @@
                             </div>
                             <hr class="my-4">
                             <div class="d-flex justify-content-center">
-                                    <div class="spinner-border" role="status"></div>
+                                    <div class="spinner-border" role="status" id="userspinner"></div>
                                 <div class="row" id="userslist"></div>
                             </div>
                         </div>
