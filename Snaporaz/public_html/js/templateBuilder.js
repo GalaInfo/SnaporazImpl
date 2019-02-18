@@ -55,10 +55,12 @@ function buildProjectThumbnail(data) {
                                 <div class="card-body">
                                     <h4 class="card-title">${title}</h4>
                                     <p class="card-text">${genres}</p>
-                                    <div class="progress">
-                                    <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="tohide hidden">
+                                        <div class="progress">
+                                            <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        ${actual} € / ${min} €                                    
                                     </div>
-                                    ${actual} € / ${min} €
                                 </div>
                             </div>
                         <a href="project.html?id=${data.id}">
@@ -70,6 +72,7 @@ function buildProjectThumbnail(data) {
 function buildProject(data) {
     var title = "Titolo";
     var genres = "Genere";
+    var plot = "Trama";
     var prizes = "Nessuna ricompensa prevista";
     var min = 0;
     var actual = 0;
@@ -83,6 +86,9 @@ function buildProject(data) {
     if (data.genres) {
         genres = data.genres;
     }
+    if (data.plot) {
+        plot = data.plot;
+    }
     if (data.prizes) {
         prizes = data.prizes;
     }
@@ -95,8 +101,8 @@ function buildProject(data) {
     if (data.donations) {
         donations = data.donations;
     }
-    if (data.deadLine) {
-        deadline = data.deadLine;
+    if (data.days) {
+        deadline = data.says;
     }
     if (data.image) {
         image = data.image;
@@ -113,12 +119,15 @@ function buildProject(data) {
 
                 <div class="col-md-4">
                     <h3 class="my-3">Trama</h3>
-                    <p>hhhhhh</p>
-                    <h3 class="my-3">Ricompense</h3>
-                    <ul>${prizes}</ul>
+                    <textarea md-textarea readonly rows="5">${plot}</textarea>
+                    <div class="hidden tohideCard">
+                        <h3 class="my-3">Ricompense</h3>
+                        <textarea md-textarea readonly>${prizes}</textarea>
+                        <button type="button" class="btn red arrows col-sm-8 mt-4" id="castbutton"><span>Finanzia il progetto </span></button>
+                    </div>
                 </div>
             </div>
-            <div class="row my-3">
+            <div class="row my-3 hidden tohideCard">
                 <div class="col-md-8">
                     <div class="progress">
                         <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -128,7 +137,8 @@ function buildProject(data) {
                         <div class="p-2"><strong>${donations} donazioni</strong></div>
                         <div class="p-2"><strong>${deadline} giorni rimanenti</strong></div>
                     </div>
-                </div>`;
+                </div>
+            </div>`;
     return template;
 }
 
@@ -161,8 +171,11 @@ function buildCandidacy(data){
                     <img class="rounded-circle img-fluid d-block mx-auto" src="../img/hiring.png" alt="user_thumbnail">
                     <h4>Posizione Aperta</h4>
                     <p class="mb-1"><strong>${data.role}</strong><br>${data.character}</p>
-                    <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="troupecandidacy"></select>
-                    <button type="button" class="btn red arrows"><span>Assegna </span></button>
+                    <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="candselect">
+                        <option value=""></option>
+                    </select>
+                    <button type="button" class="btn red arrows" onclick="addCandidacy(${data.id})"><span>Candidati </span></button>
+                    <button type="button" class="btn red arrows hidden tohideCand mt-1" onclick="assign()"><span>Assegna </span></button>
                 </div>`;
     return template;
 }
@@ -187,7 +200,7 @@ function buildUserThumbnail(data) {
     }
     const template = `
                     <div class="col-sm-2 text-center mb-4">
-                        <a href="user.html?id=${data.user}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
+                        <a href="user.html?id=${data.userId}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
                         <h4>${name} ${surname}</h4>
                         </a>
                         <p><strong>${role}</strong><br>${data.character}</p>

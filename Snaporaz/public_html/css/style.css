@@ -161,7 +161,9 @@ td strong{
     color: #b70f0a;
     width: 3rem;
     height: 3rem;
-    display: none;
 }
 
+.hidden{
+    display: none;
+}
 

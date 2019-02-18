@@ -21,8 +21,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-        <script src="../js/navbarLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <script src="../js/navbarLoader.js"></script>        
+        <script src="../js/templateBuilder.js"></script>
         <script src="../js/search.js"></script>
+        
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -84,7 +87,7 @@
                             </div>
                             <hr class="my-4">
                             <div class="d-flex justify-content-center">
-                                <div class="spinner-border" role="status" id="projectspinner"></div>
+                                <div class="spinner-border hidden" role="status" id="projectspinner"></div>
                                 <div class="row" id="projectslist"></div>
                             </div>
                         </div>
@@ -149,7 +152,7 @@
                             </div>
                             <hr class="my-4">
                             <div class="d-flex justify-content-center">
-                                    <div class="spinner-border" role="status" id="userspinner"></div>
+                                    <div class="spinner-border hidden" role="status" id="userspinner"></div>
                                 <div class="row" id="userslist"></div>
                             </div>
                         </div>
