@@ -119,11 +119,11 @@ function buildProject(data) {
 
                 <div class="col-md-4">
                     <h3 class="my-3">Trama</h3>
-                    <textarea md-textarea readonly rows="5">${plot}</textarea>
+                    <textarea class="md-textarea form-control" readonly rows="5">${plot}</textarea>
                     <div class="hidden tohideCard">
                         <h3 class="my-3">Ricompense</h3>
-                        <textarea md-textarea readonly>${prizes}</textarea>
-                        <button type="button" class="btn red arrows col-sm-8 mt-4" id="castbutton"><span>Finanzia il progetto </span></button>
+                        <textarea class="md-textarea form-control" readonly rows="3">${prizes}</textarea>
+                        <button type="button" class="btn red arrows mt-4" id="castbutton"><span>Finanzia il progetto </span></button>
                     </div>
                 </div>
             </div>
@@ -165,17 +165,15 @@ function buildAddCast() {
     return template;
 }
 
-function buildCandidacy(data){
+function buildCandidacy(data, i) {
     const template = `                        
                 <div class="col-lg-2 col-sm-6 text-center mb-4">
                     <img class="rounded-circle img-fluid d-block mx-auto" src="../img/hiring.png" alt="user_thumbnail">
                     <h4>Posizione Aperta</h4>
                     <p class="mb-1"><strong>${data.role}</strong><br>${data.character}</p>
-                    <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="candselect">
-                        <option value=""></option>
-                    </select>
-                    <button type="button" class="btn red arrows" onclick="addCandidacy(${data.id})"><span>Candidati </span></button>
-                    <button type="button" class="btn red arrows hidden tohideCand mt-1" onclick="assign()"><span>Assegna </span></button>
+                    <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="candselect${i}"></select>
+                    <button type="button" class="btn red arrows" onclick="addCandidacy(${data.id}, ${i})"><span>Candidati </span></button>
+                    <button type="button" class="btn red arrows hidden tohideCand mt-1" onclick="assign(${data.id}, ${i})"><span>Assegna </span></button>
                 </div>`;
     return template;
 }
@@ -216,7 +214,6 @@ function buildUser(data) {
     var birth = "Data di nascita";
     var age = "Età";
     var country = "Nazione";
-    var phone = "Telefono";
     var image = "../img/user_placeholder.png";
 
     if (data.name) {
@@ -225,8 +222,8 @@ function buildUser(data) {
     if (data.surname) {
         surname = data.surname;
     }
-    if (data.roles) {
-        roles = data.roles;
+    if (data.role) {
+        roles = data.role;
     }
     if (data.mail) {
         mail = data.mail;
@@ -237,8 +234,8 @@ function buildUser(data) {
     if (data.age) {
         age = data.age;
     }
-    if (data.country) {
-        country = data.country;
+    if (data.nation) {
+        country = data.nation;
     }
     if (data.phone) {
         phone = data.phone;
@@ -261,9 +258,7 @@ function buildUser(data) {
                     <hr>
                     ${age}
                     <hr>
-                    ${country}
-                    <hr>
-                    ${phone}`;
+                    ${country}`;
     return template;
 }
 
@@ -304,12 +299,16 @@ function buildUserExp(data) {
 }
 
 function buildSelect(data, defaultValue) {
-    var init;
+    var init = "";
     if (defaultValue) {
         init = `<option>${defaultValue}</option>`;
     }
     $.each(data, function (i, v) {
-        var opt = `<option>${v}</option>`;
+        if (v.hasOwnProperty("name")) {
+            var opt = `<option>${v.name} ${v.surname}</option>`;
+        } else {
+            var opt = `<option>${v}</option>`;
+        }
         init += opt;
     });
     return init;

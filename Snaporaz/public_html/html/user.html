@@ -10,13 +10,13 @@
 
         <meta name="description" content="">
         <meta name="author" content="">
-        
+
         <link rel="icon" href="../img/icona.png" type="image/png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
         <link href="../css/style.css" rel="stylesheet">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -25,7 +25,7 @@
         <script src="../js/navbarLoader.js"></script>        
         <script src="../js/templateBuilder.js"></script>
         <script src="../js/user.js"></script>
-        
+
     </head>
     <body>
         <div id="navbar" class="fixed-top"></div>
@@ -52,32 +52,25 @@
                                         <th scope="col">Genere</th>
                                     </tr>
                                 </thead>
-                                <tbody id="experiences">
-                                    <tr>
+                                <tbody id="experiences">                                    
+                                    <tr class="hidden tohide">
                                         <td>
                                             <div class="form-group">
-                                                <input class="form-control mb-2" type="number" placeholder="Dal">
-                                                <input class="form-control" type="number" placeholder="Al">
+                                                <input class="form-control mb-2" name="from" type="number" placeholder="Dal">
+                                                <input class="form-control" name="to" type="number" placeholder="Al">
                                             </div>
                                         </td>
                                         <td>
-                                            <select class="selectpicker">
-                                                <option>Attore</option>
-                                                <option>Attrice</option>
-                                                <option>Regista</option>
-                                                <option>Direttore della Fotografia</option>
-                                            </select>
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="role" title="Nessuno"></select>
+                                            </div>
                                         </td>
                                         <td>
-                                            <input class="form-control" type="text" placeholder="Nome">
+                                            <input class="form-control" name="title" type="text" placeholder="Titolo">
                                         </td>
                                         <td>
-                                            <select multiple class="selectpicker mb-2" data-live-search="true" title="Nessuno">
-                                                <option>Drammatico</option>
-                                                <option>Commedia</option>
-                                                <option>Horror</option>
-                                            </select>
-                                            <button type="button" class="btn red insert">Inserisci</button>
+                                            <select multiple class="selectpicker mb-2" data-live-search="true" name="genres" title="Nessuno"></select>
+                                            <button type="button" class="btn red insert" onclick="newExp()">Inserisci</button>
                                         </td>
                                     </tr>
                                 </tbody>
