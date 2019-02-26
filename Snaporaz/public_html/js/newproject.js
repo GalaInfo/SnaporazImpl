@@ -2,7 +2,7 @@ $(function () {
     var sgenres = $('select[name="genres"]');
 
     //costruzione select ruoli
-    $.get("http://localhost:42729/SnaporazSpring/genres", function (data) {
+    $.get(BASE_URL + "genres", function (data) {
         const template = buildSelect(data);
         sgenres.append(template);
         sgenres.selectpicker("refresh");
@@ -48,7 +48,7 @@ $(function () {
             rewards = $('textarea[name="rewards"]').val();
         }
 
-        $.post("http://localhost:42729/SnaporazSpring/newProject", {idTokenString: Cookies.get('token'), title: title, genres: genres, plot: plot, img: img, min: objective, prizes: rewards, owner: 0}, function (data) {
+        $.post(BASE_URL + "newProject", {idTokenString: Cookies.get('token'), title: title, genres: genres, plot: plot, img: img, min: objective, prizes: rewards, owner: 0}, function (data) {
             window.location = 'project.html?id=' + data.id;
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");

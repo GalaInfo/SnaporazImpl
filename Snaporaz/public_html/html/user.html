@@ -22,6 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <script src="../js/server_data.js"></script>
         <script src="../js/navbarLoader.js"></script>        
         <script src="../js/templateBuilder.js"></script>
         <script src="../js/user.js"></script>
@@ -38,7 +39,7 @@
                             <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Curriculum Vitae</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Modifica Profilo</a>
+                            <a href="" data-target="#edit" data-toggle="tab" class="nav-link hidden  tohide">Modifica Profilo</a>
                         </li>
                     </ul>
                     <div class="tab-content pb-3">
@@ -77,74 +78,58 @@
                             </table>
                         </div>
                         <div class="tab-pane" id="edit">
-                            <form role="form">
+                            <form role="form" id="modify">
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Nome</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="Martin">
+                                        <input class="form-control" name="name" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Cognome</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="Scorsese">
+                                        <input class="form-control" name="surname" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="email" value="martin.scorsese@gmail.com">
+                                        <input class="form-control" name="email" type="email">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Ruoli</label>
                                     <div class="col-lg-9">
-                                        <select multiple class="selectpicker form-control" data-live-search="true" title="Nessuno">
-                                            <option>Attore</option>
-                                            <option>Attrice</option>
-                                            <option selected>Regista</option>
-                                            <option>Direttore della Fotografia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Telefono</label>
-                                    <div class="col-lg-9">
-                                        <input class="form-control" type="tel" value="333 - 333 33 33">
+                                        <select multiple class="selectpicker form-control" data-live-search="true" name="roles" title="Nessuno"></select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Immagine Profilo</label>
-                                    <div class="col-lg-9">
-                                        <input class="form-control" type="file">
+                                    <div class="col-lg-8">
+                                        <input type="text" class="form-control" placeholder="URL Immagine" id="url-img" name="img">
                                     </div>
+                                    <div class="input-group-append">
+                                        <button class="btn red" type="button" id="load-img"><span class="oi oi-reload"></span></button>
+                                    </div>
+
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Data di Nascita</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="date" value="1942-11-17">
+                                        <input class="form-control" type="date" name="date">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Indirizzo</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Nazione</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="" placeholder="Via">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-6">
-                                        <input class="form-control" type="text" value="Hollywood, Los Angeles" placeholder="Città">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="text" value="California" placeholder="Stato">
+                                        <input class="form-control" name="nation" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
                                         <input type="reset" class="btn btn-secondary" value="Annulla">
-                                        <input type="button" class="btn red" value="Salva">
+                                        <input type="submit" class="btn red" value="Salva">
                                     </div>
                                 </div>
                             </form>

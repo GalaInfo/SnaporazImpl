@@ -1,5 +1,5 @@
 $(function () {
-    $.get("http://localhost:42729/SnaporazSpring", function (data) {
+    $.get(BASE_URL, function (data) {
         //most funded
         $.each(data.mostFundedProjects, function (i, v) {
             const template = buildProjectThumbnail(v);

@@ -8,7 +8,7 @@ $(function () {
         $("#projectslist").empty();
         $("#projectspinner").show();
         $('input[name="projecttitle"]').val(title);
-        $.post("http://localhost:42729/SnaporazSpring/projects", {title: title, owner: "", genre: "", collab: "", order: "Titolo", asc: true}, function (data) {
+        $.post(BASE_URL + "projects", {title: title, owner: "", genre: "", collab: "", order: "Titolo", asc: true}, function (data) {
             $("#projectspinner").hide();
             if (data.length === 0) {
                 $("#projectslist").empty();
@@ -28,7 +28,7 @@ $(function () {
             $("#navbar").append(alert);
         });
     }
-    
+
     //proprietario
     var ownerName = getUrlParameter("name");
     var ownerSurname = getUrlParameter("surname");
@@ -36,7 +36,7 @@ $(function () {
         $("#projectslist").empty();
         $("#projectspinner").show();
         $('input[name="projecttitle"]').val(title);
-        $.post("http://localhost:42729/SnaporazSpring/projects", {title: "", owner: "ownerName", genre: "", collab: "", order: "Titolo", asc: true}, function (data) {
+        $.post(BASE_URL + "projects", {title: "", owner: "ownerName", genre: "", collab: "", order: "Titolo", asc: true}, function (data) {
             $("#projectspinner").hide();
             if (data.length === 0) {
                 $("#projectslist").empty();
@@ -56,9 +56,9 @@ $(function () {
             $("#navbar").append(alert);
         });
     }
-    
+
     //costruzione select generi
-    $.get("http://localhost:42729/SnaporazSpring/genres", function (data) {
+    $.get(BASE_URL + "genres", function (data) {
         const template = buildSelect(data, "Qualunque");
         pselect.append(template);
         pselect.selectpicker("refresh");
@@ -68,7 +68,7 @@ $(function () {
     });
 
     //costruzione select ruoli
-    $.get("http://localhost:42729/SnaporazSpring/roles", function (data) {
+    $.get(BASE_URL + "roles", function (data) {
         const template = buildSelect(data, "Qualunque");
         urole.append(template);
         urole.selectpicker("refresh");
@@ -94,7 +94,7 @@ $(function () {
             asc = false;
         }
 
-        $.post("http://localhost:42729/SnaporazSpring/projects", {title: title, owner: owner, genre: genre, collab: collab, order: order, asc: asc}, function (data) {
+        $.post(BASE_URL + "projects", {title: title, owner: owner, genre: genre, collab: collab, order: order, asc: asc}, function (data) {
             $("#projectspinner").hide();
             //nessun risultato
             if (data.length === 0) {
@@ -150,7 +150,7 @@ $(function () {
             asc = false;
         }
 
-        $.post("http://localhost:42729/SnaporazSpring/users", {name: name, surname: surname, roles: role, minAge: minage, maxAge: maxage, project: title, genres: genre, order: order, asc: asc}, function (data) {
+        $.post(BASE_URL + "users", {name: name, surname: surname, roles: role, minAge: minage, maxAge: maxage, project: title, genres: genre, order: order, asc: asc}, function (data) {
             $("#userspinner").hide();
             if (data.length === 0) {
                 $("#userslist").empty();

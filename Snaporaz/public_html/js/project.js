@@ -1,5 +1,5 @@
 $(function () {
-    $.post("http://localhost:42729/SnaporazSpring/project", {idTokenString: Cookies.get('token'), id: getUrlParameter("id")}, function (data) {
+    $.post(BASE_URL + "project", {idTokenString: Cookies.get('token'), id: getUrlParameter("id")}, function (data) {
 //scheda progetto
         const template = buildProject(data);
         $("#projectCard").append(template);
@@ -39,7 +39,7 @@ $(function () {
 //aggiungi parte
             const addTroupe = buildAddTroupe("troupeselect");
             $("#trouperow").append(addTroupe);
-            $.get("http://localhost:42729/SnaporazSpring/troupe", function (data) {
+            $.get(BASE_URL + "troupe", function (data) {
                 const template = buildSelect(data);
                 $("#troupeselect").append(template);
                 $("#troupeselect").selectpicker("refresh");
@@ -49,7 +49,7 @@ $(function () {
             });
             const addCast = buildAddCast("castselect");
             $("#castrow").append(addCast);
-            $.get("http://localhost:42729/SnaporazSpring/cast", function (data) {
+            $.get(BASE_URL + "cast", function (data) {
                 const template = buildSelect(data);
                 $("#castselect").append(template);
                 $("#castselect").selectpicker("refresh");
@@ -67,7 +67,7 @@ $(function () {
 function troupeButton() {
     var val = $("#troupeselect").val();
     if (val) {
-        $.post("http://localhost:42729/SnaporazSpring/part", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), role: val, character: ""}, function (data) {
+        $.post(BASE_URL + "part", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), role: val, character: ""}, function (data) {
             const template = buildCandidacy(data);
             $("#trouperow").append(template);
             $(".tohideCand").show();
@@ -85,7 +85,7 @@ function castButton() {
     var val = $("#castselect").val();
     var char = $("#character").val();
     if (val && char) {
-        $.post("http://localhost:42729/SnaporazSpring/part", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), role: val, character: char}, function (data) {
+        $.post(BASE_URL + "part", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), role: val, character: char}, function (data) {
             const template = buildCandidacy(data);
             $("#castrow").append(template);
             $(".tohideCand").show();
@@ -100,7 +100,7 @@ function castButton() {
 }
 
 function addCandidacy(id, i) {
-    $.post("http://localhost:42729/SnaporazSpring/candidacy", {part: id, idTokenString: Cookies.get('token')}, function (data) {
+    $.post(BASE_URL + "candidacy", {part: id, idTokenString: Cookies.get('token')}, function (data) {
         if (data.success === false) {
             const alert = buildAlert("Non puoi candidarti per questa parte");
             $("#navbar").append(alert);
@@ -123,7 +123,7 @@ function addCandidacy(id, i) {
 function assign(i) {
     var candId = $("#candselect" + i).val();
     if (candId) {
-        $.post("http://localhost:42729/SnaporazSpring/assign", {candidacy: candId, idTokenString: Cookies.get('token')}, function (data) {
+        $.post(BASE_URL + "assign", {candidacy: candId, idTokenString: Cookies.get('token')}, function (data) {
             if (data.success === false) {
                 const alert = buildAlert("Non puoi assegnare questo ruolo");
                 $("#navbar").append(alert);
