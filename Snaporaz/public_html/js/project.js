@@ -15,7 +15,7 @@ $(function () {
                 $(".tohide").show();
             }
         });
-        //cast/troupe
+//cast/troupe
         $.each(data.parts, function (i, v) {
             var template;
             if (v.name) {
@@ -120,15 +120,23 @@ function addCandidacy(id, i) {
 
 }
 
-function assign(id, i) {
-    if ($("#candselect" + i).val()) {
-        $.post("http://localhost:42729/SnaporazSpring/assign", {candidacy: id, idTokenString: Cookies.get('token')}, function (data) {
+function assign(i) {
+    var candId = $("#candselect" + i).val();
+    if (candId) {
+        $.post("http://localhost:42729/SnaporazSpring/assign", {candidacy: candId, idTokenString: Cookies.get('token')}, function (data) {
             if (data.success === false) {
                 const alert = buildAlert("Non puoi assegnare questo ruolo");
                 $("#navbar").append(alert);
             } else {
                 const alert = buildAlert("Assegnamento avvenuto con <strong>successo</strong>");
                 $("#navbar").append(alert);
+                $("#candidacy" + i).hide();
+                const template = buildUserThumbnail(data);
+                if (data.character) {
+                    $("#castrow").append(template);
+                } else {
+                    $("#trouperow").append(template);
+                }
             }
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");

@@ -167,13 +167,13 @@ function buildAddCast() {
 
 function buildCandidacy(data, i) {
     const template = `                        
-                <div class="col-lg-2 col-sm-6 text-center mb-4">
+                <div class="col-lg-2 col-sm-6 text-center mb-4" id="candidacy${i}">
                     <img class="rounded-circle img-fluid d-block mx-auto" src="../img/hiring.png" alt="user_thumbnail">
                     <h4>Posizione Aperta</h4>
                     <p class="mb-1"><strong>${data.role}</strong><br>${data.character}</p>
                     <select class="selectpicker form-control" data-live-search="true" title="Nessuna scelta" id="candselect${i}"></select>
                     <button type="button" class="btn red arrows" onclick="addCandidacy(${data.id}, ${i})"><span>Candidati </span></button>
-                    <button type="button" class="btn red arrows hidden tohideCand mt-1" onclick="assign(${data.id}, ${i})"><span>Assegna </span></button>
+                    <button type="button" class="btn red arrows hidden tohideCand mt-1" onclick="assign(${i})"><span>Assegna </span></button>
                 </div>`;
     return template;
 }
@@ -305,7 +305,7 @@ function buildSelect(data, defaultValue) {
     }
     $.each(data, function (i, v) {
         if (v.hasOwnProperty("name")) {
-            var opt = `<option>${v.name} ${v.surname}</option>`;
+            var opt = `<option value="${v.id}">${v.name} ${v.surname}</option>`;
         } else {
             var opt = `<option>${v}</option>`;
         }
