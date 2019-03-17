@@ -7,11 +7,8 @@ function newExp() {
 
     if (to && from && role && title && genres) {
         $.post(BASE_URL + "experience", {idTokenString: Cookies.get('token'), title: title, genres: genres, start: to, end: from, role: role}, function (data) {
-            $("#experiences").empty();
-            $.each(data.experiences, function (i, v) {
-                const template = buildUserExp(v);
-                $("#experiences").append(template);
-            });
+            const template = buildUserExp(data);
+            $("#experiences").append(template);
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
             $("#navbar").append(alert);
@@ -22,24 +19,32 @@ function newExp() {
     }
 }
 
+//errore immagine
+function imgError() {
+    $("#thumbnail").attr("src", "../img/user_placeholder.png");
+    $('input[name="img"]').val('');
+}
+
 $(function () {
     //campi form
-    var name = $('input[name="name"]').val()
-    var surname = $('input[name="surname"]').val();
-    var email = $('input[name="email"]').val();
-    var roles = "";
-    var img = "";
-    var date;
-    var nation = "";
+    var name = $('input[name="name"]');
+    var surname = $('input[name="surname"]');
+    var email = $('input[name="email"]');
+    var roles = $('select[name="roles"]');
+    var img = $('input[name="img"]');
+    var date = $('input[name="date"]');
+    var nation = $('input[name="nation"]');
 
     $.get(BASE_URL + "user/" + getUrlParameter("id"), function (data) {
         const template = buildUser(data);
         $("#usercol").append(template);
-        name = data.name;
-        surname = data.surname;
-        email = data.mail;
-        date = data.birth;
-        nation = data.nation;
+        name.val(data.name);
+        surname.val(data.surname);
+        email.val(data.mail);
+        date.val(data.birth);
+        nation.val(data.nation);
+        img.val(data.img);
+        roles.val(data.role);
         $.each(data.experiences, function (i, v) {
             const template = buildUserExp(v);
             $("#experiences").append(template);
@@ -53,8 +58,8 @@ $(function () {
         $(".tohide").show();
         $.get(BASE_URL + "roles", function (data) {
             const template = buildSelect(data);
-            $('select[name="roles"]').append(template);
-            $('select[name="roles"]').selectpicker("refresh");
+            $('select[name="role"]').append(template);
+            $('select[name="role"]').selectpicker("refresh");
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
             $("#navbar").append(alert);
@@ -68,27 +73,36 @@ $(function () {
             $("#navbar").append(alert);
         });
     }
+
+    //lista ruoli in form
+    $.get(BASE_URL + "roles", function (data) {
+        const template = buildSelect(data);
+        roles.append(template);
+        roles.selectpicker("refresh");
+    }).fail(function () {
+        const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
+        $("#navbar").append(alert);
+    });
+
     //modifica profilo
     $("#modify").submit(function (e) {
         e.preventDefault();
-        if ($('select[name="roles"]').val().join()) {
-            roles = $('select[name="roles"]').val().join();
-        }
-        if ($('input[name="img"]').val()) {
-            img = $('input[name="img"]').val();
-        }
-        if ($('input[name="date"]').val()) {
-            date = $('input[name="date"]').val();
-        }
-        if ($('input[name="nation"]').val()) {
-            nation = $('input[name="nation"]').val();
-        }
-        if (name && surname && email) {
-            $.post(BASE_URL + "update", {IdTokenString: Cookies.get('token'), name: name, surname: surname, roles: roles, mail: email, birth: date, nation: nation, image: img}, function(data){
+        if (name.val() && surname.val() && email.val()) {
+            $.post(BASE_URL + "update", {idTokenString: Cookies.get('token'), name: name.val(), surname: surname.val(), roles: roles.val().join(), mail: email.val(), birth: date.val(), nation: nation.val(), image: img.val()}, function (data) {
                 console.log("Operazione non supportata");
+            }).fail(function () {
+                const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
+                $("#navbar").append(alert);
             });
+        } else {
+            const alert = buildAlert("Devi inserire almeno <strong>Nome</strong>, <strong>Cognome</strong> ed <strong>Email</strong>");
+            $("#navbar").append(alert);
         }
     });
-});
+    //immagine
+    $("#load-img").click(function () {
+        $("#thumbnail").attr("src", $("#url-img").val());
+    });
 
+});
 

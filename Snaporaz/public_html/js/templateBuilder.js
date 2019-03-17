@@ -245,7 +245,7 @@ function buildUser(data) {
     }
 
     const template = `
-                    <img src=${image} class="rounded-circle img-fluid d-block mx-auto" alt="avatar">
+                    <img src=${image} class="rounded-circle img-fluid d-block mx-auto" alt="avatar" id="thumbnail" onerror="imgError()">
                     <h4 class="mt-4">${name}</h4>
                     <hr>
                     <h4>${surname}</h4>
