@@ -25,6 +25,11 @@ function imgError() {
     $('input[name="img"]').val('');
 }
 
+function stringToDate(dateStr) {
+    var parts = dateStr.split("-")
+    return new Date(parts[0], parts[1], parts[2])
+}
+
 $(function () {
     //campi form
     var name = $('input[name="name"]');
@@ -43,7 +48,7 @@ $(function () {
         email.val(data.mail);
         date.val(data.birth);
         nation.val(data.nation);
-        img.val(data.img);
+        img.val(data.image);
         roles.val(data.role);
         $.each(data.experiences, function (i, v) {
             const template = buildUserExp(v);
@@ -88,8 +93,23 @@ $(function () {
     $("#modify").submit(function (e) {
         e.preventDefault();
         if (name.val() && surname.val() && email.val()) {
-            $.post(BASE_URL + "update", {idTokenString: Cookies.get('token'), name: name.val(), surname: surname.val(), roles: roles.val().join(), mail: email.val(), birth: date.val(), nation: nation.val(), image: img.val()}, function (data) {
-                console.log("Operazione non supportata");
+            var dateParam;
+            if (date.val() === "") {
+                dateParam = 0;
+            } else {
+                dateParam = new Date(date.val()).getTime();
+            }
+            $.post(BASE_URL + "update", {idTokenString: Cookies.get('token'), name: name.val(), surname: surname.val(), roles: roles.val().join(), mail: email.val(), birth: dateParam, nation: nation.val(), image: img.val()}, function (data) {
+                const template = buildUser(data);
+                $("#usercol").empty();
+                $("#usercol").append(template);
+                name.val(data.name);
+                surname.val(data.surname);
+                email.val(data.mail);
+                date.val(data.birth);
+                nation.val(data.nation);
+                img.val(data.image);
+                roles.val(data.role);
             }).fail(function () {
                 const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
                 $("#navbar").append(alert);

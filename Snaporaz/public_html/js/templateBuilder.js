@@ -101,8 +101,8 @@ function buildProject(data) {
     if (data.donations) {
         donations = data.donations;
     }
-    if (data.days) {
-        deadline = data.says;
+    if (data.days > 0) {
+        deadline = data.days;
     }
     if (data.image) {
         image = data.image;
@@ -265,7 +265,8 @@ function buildUser(data) {
 function buildUserExp(data) {
     var title = "Titolo";
     var genres = "Genere";
-    var date = "Data";
+    var start = "Data";
+    var end = "Data";
     var role = "Ruolo";
 
     if (data.title) {
@@ -274,8 +275,11 @@ function buildUserExp(data) {
     if (data.genres) {
         genres = data.genres;
     }
-    if (data.roles) {
-        date = data.date;
+    if (data.start) {
+        start = data.date;
+    }
+    if (data.end) {
+        end = data.date;
     }
     if (data.role) {
         role = data.role;
@@ -283,7 +287,10 @@ function buildUserExp(data) {
     const template = `                                    
                     <tr>
                         <td>
-                            ${date}
+                            ${start}
+                        </td>
+                        <td>
+                            ${end}
                         </td>
                         <td>
                             ${role}
