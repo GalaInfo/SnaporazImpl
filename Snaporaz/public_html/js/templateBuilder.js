@@ -112,30 +112,31 @@ function buildProject(data) {
             <h2><small>${genres}</small></h2>
         
             <div class="row">
-
                 <div class="col-md-8">
                     <img class="rounded project-thumb" src=${image} alt="locandina">
+                    <div class=" mt-4 hidden tohideCard">
+                        <div class="progress">
+                            <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="p-2"><strong>${actual} € / ${min} €</strong></div>
+                            <div class="p-2"><strong>${donations} donazioni</strong></div>
+                            <div class="p-2"><strong>${deadline} giorni rimanenti</strong></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-4">
-                    <h3 class="my-3">Trama</h3>
+                    <h3 class="mb-3">Trama</h3>
                     <textarea class="md-textarea form-control" readonly rows="5">${plot}</textarea>
                     <div class="hidden tohideCard">
                         <h3 class="my-3">Ricompense</h3>
                         <textarea class="md-textarea form-control" readonly rows="3">${prizes}</textarea>
-                        <button type="button" class="btn red arrows mt-4" id="castbutton"><span>Finanzia il progetto </span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-3 hidden tohideCard">
-                <div class="col-md-8">
-                    <div class="progress">
-                        <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="p-2"><strong>${actual} € / ${min} €</strong></div>
-                        <div class="p-2"><strong>${donations} donazioni</strong></div>
-                        <div class="p-2"><strong>${deadline} giorni rimanenti</strong></div>
+                        <h3 class="my-3">Finanzia il progetto</h3>
+                        <div id="payment">
+                            <input class="form-control my-2" type="number" name="donation" placeholder="Cifra da donare" min="1">
+                            <div id="paypal"></div>
+                        </div>
                     </div>
                 </div>
             </div>`;

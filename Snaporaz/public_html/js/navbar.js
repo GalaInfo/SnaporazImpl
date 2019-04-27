@@ -9,6 +9,9 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         Cookies.set('token', "");
+        Cookies.set('id', "");
+        Cookies.set('name', "");
+        Cookies.set('surname', "");
     });
 }
 

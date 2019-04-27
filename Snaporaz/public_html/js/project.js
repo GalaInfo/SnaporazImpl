@@ -6,7 +6,22 @@ $(function () {
         if (data.min > 0) {
             $(".tohideCard").show();
         }
-
+//bottone paypal
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            // Set up the transaction
+            return actions.order.create({
+                purchase_units: [{
+                        amount: {
+                            value: $('input[name="donation"]').val()
+                        },
+                        payee: {
+                            email_address: 'impar-seller@atm-mi.ga'
+                        }
+                    }]
+            });
+        }
+    }).render('#paypal');
 //correlati
         $.each(data.related, function (i, v) {
             const template = buildProjectThumbnail(v);
@@ -146,7 +161,5 @@ function assign(i) {
         const alert = buildAlert("Devi selezionare un <strong>candidato</strong>");
         $("#navbar").append(alert);
     }
-
 }
-
 
