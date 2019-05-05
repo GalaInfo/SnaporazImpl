@@ -7,21 +7,35 @@ $(function () {
             $(".tohideCard").show();
         }
 //bottone paypal
-    paypal.Buttons({
-        createOrder: function (data, actions) {
-            // Set up the transaction
-            return actions.order.create({
-                purchase_units: [{
-                        amount: {
-                            value: $('input[name="donation"]').val()
-                        },
-                        payee: {
-                            email_address: 'impar-seller@atm-mi.ga'
-                        }
-                    }]
-            });
-        }
-    }).render('#paypal');
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                // Set up the transaction
+                return actions.order.create({
+                    purchase_units: [{
+                            amount: {
+                                value: $('input[name="donation"]').val(),
+                            },
+                            payee: {
+                                email_address: 'impar-seller@atm-mi.ga'
+                            },
+                        }]
+                });
+            },
+            onApprove: function (data, actions) {
+                // Capture the funds from the transaction
+                return actions.order.capture().then(function (details) {
+                    //Richiesta al server
+                    $.post(BASE_URL + "donate", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), transactionId: details.id, sum: details.purchase_units[0].amount.value}, function (data) {
+                        const template = buildProjectDonation(data);
+                        $("#donationDiv").empty();
+                        $("#donationDiv").append(template);
+                    }).fail(function () {
+                        const alert = buildAlert("Impossibile completare l'operazione di pagamento");
+                        $("#navbar").append(alert);
+                    })
+                });
+            }
+        }).render('#paypal');
 //correlati
         $.each(data.related, function (i, v) {
             const template = buildProjectThumbnail(v);

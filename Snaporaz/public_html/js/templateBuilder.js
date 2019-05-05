@@ -25,6 +25,36 @@ function buildAlert(msg) {
     return template;
 }
 
+function buildProjectDonation(data) {
+    var min = 0;
+    var actual = 0;
+    var donations = 0;
+    var deadline = 0;
+
+    if (data.min !== null) {
+        min = data.min;
+    }
+    if (data.actual !== null) {
+        actual = data.actual;
+    }
+    if (data.donations !== null) {
+        donations = data.donations;
+    }
+    if (data.days > 0) {
+        deadline = data.days;
+    }
+    const template = `                      
+                        <div class="progress">
+                            <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="bar"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="p-2"><strong>${actual} € / ${min} €</strong></div>
+                            <div class="p-2"><strong>${donations} donazioni</strong></div>
+                            <div class="p-2"><strong>${deadline} giorni rimanenti</strong></div>
+                        </div>`;
+    return template;
+}
+
 function buildProjectThumbnail(data) {
     var title = "Titolo";
     var genres = "Genere";
@@ -114,9 +144,9 @@ function buildProject(data) {
             <div class="row">
                 <div class="col-md-8">
                     <img class="rounded project-thumb" src=${image} alt="locandina">
-                    <div class=" mt-4 hidden tohideCard">
+                    <div class=" mt-4 hidden tohideCard" id="donationDiv">
                         <div class="progress">
-                            <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar red" role="progressbar" style="width:${(actual / min) * 100}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="bar"></div>
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="p-2"><strong>${actual} € / ${min} €</strong></div>
