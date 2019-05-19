@@ -26,7 +26,7 @@ $(function () {
                 return actions.order.capture().then(function (details) {
                     //Richiesta al server
                     //$.post(BASE_URL + "donate", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), transactionId: details.id, sum: details.purchase_units[0].amount.value}, function (data) {
-                    $.post(SOAP_URL, payment = buildSoapRequest(details.id, Cookies.get('id'), getUrlParameter("id"),  details.purchase_units[0].amount.value), function (data) {
+                    $.post(SOAP_URL, $.parseXML(), function (data) {
                         const template = buildProjectDonation(data);
                         $("#donationDiv").empty();
                         $("#donationDiv").append(template);
