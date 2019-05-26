@@ -353,6 +353,6 @@ function buildSelect(data, defaultValue) {
 }
 
 function buildSoapRequest(id, userId, project, amount) {
-    const template = `<?xml version="1.0" encoding="UTF-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><S:Body xmlns:ns2="http://ejb/"><ns2:addPayment><id>${id}</id><userId>${userId}</userId><project>${project}</project><amount>${amount}</amount></ns2:addPayment></S:Body></S:Envelope>`;
-    return template;
+    var template = `<?xml version="1.0" encoding="UTF-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><S:Body xmlns:ns2="http://ejb/"><ns2:addPayment><id>${id}</id><userId>${userId}</userId><project>${project}</project><amount>${amount}</amount></ns2:addPayment></S:Body></S:Envelope>`;
+    return $.parseXML(template);
 }

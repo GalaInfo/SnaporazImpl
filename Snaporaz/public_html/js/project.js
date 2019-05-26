@@ -25,15 +25,17 @@ $(function () {
                 // Capture the funds from the transaction
                 return actions.order.capture().then(function (details) {
                     //Richiesta al server
-                    //$.post(BASE_URL + "donate", {idTokenString: Cookies.get('token'), project: getUrlParameter("id"), transactionId: details.id, sum: details.purchase_units[0].amount.value}, function (data) {
-                    $.post(SOAP_URL, $.parseXML(), function (data) {
-                        const template = buildProjectDonation(data);
-                        $("#donationDiv").empty();
-                        $("#donationDiv").append(template);
-                    }).fail(function () {
-                        const alert = buildAlert("Impossibile completare l'operazione di pagamento");
-                        $("#navbar").append(alert);
-                    })
+                    $.soap({
+                        url: SOAP_URL,
+                        method: 'addPayment',
+                        data: {id:details.id , userId:Cookies.get('token') , project: getUrlParameter("id"), amount: details.purchase_units[0].amount.value},
+                        success: function(data){
+                            console.log(data);
+                        },
+                        error: function(data){
+                            console.log("Vaffanculo")
+                        }
+                    });
                 });
             }
         }).render('#paypal');
