@@ -1,2 +1,6 @@
 const BASE_URL = "http://localhost:42729/SnaporazSpring/";
-const SOAP_URL = "http://localhost:42729/PaymentService/PaymentService";
+//errore immagine
+function imgError() {
+    $("#thumbnail").attr("src", "../img/user_placeholder.png");
+    $('input[name="img"]').val('');
+}

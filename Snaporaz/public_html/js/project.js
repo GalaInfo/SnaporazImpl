@@ -6,10 +6,14 @@ $(function () {
         if (data.min > 0) {
             $(".tohideCard").show();
         }
+        if (Cookies.get('id')) {
+            console.log(Cookies.get('id'));
+            $(".tohideDonation").show();
+        }
 //bottone paypal
         paypal.Buttons({
             createOrder: function (data, actions) {
-                // Set up the transaction
+// Set up the transaction
                 return actions.order.create({
                     purchase_units: [{
                             amount: {
@@ -22,19 +26,13 @@ $(function () {
                 });
             },
             onApprove: function (data, actions) {
-                // Capture the funds from the transaction
+                //Cattura i dettagli della transazione
                 return actions.order.capture().then(function (details) {
                     //Richiesta al server
-                    $.soap({
-                        url: SOAP_URL,
-                        method: 'addPayment',
-                        data: {id:details.id , userId:Cookies.get('token') , project: getUrlParameter("id"), amount: details.purchase_units[0].amount.value},
-                        success: function(data){
-                            console.log(data);
-                        },
-                        error: function(data){
-                            console.log("Vaffanculo")
-                        }
+                    $.post(BASE_URL + "donate", {payment: details.id, idTokenString: Cookies.get('token'), project: getUrlParameter("id"), amount: details.purchase_units[0].amount.value}, function (data) {
+                        const template = buildProjectDonation(data);
+                        $("#donationDiv").empty();
+                        $("#donationDiv").append(template);
                     });
                 });
             }

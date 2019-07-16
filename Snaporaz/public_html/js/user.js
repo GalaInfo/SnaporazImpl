@@ -19,12 +19,6 @@ function newExp() {
     }
 }
 
-//errore immagine
-function imgError() {
-    $("#thumbnail").attr("src", "../img/user_placeholder.png");
-    $('input[name="img"]').val('');
-}
-
 function stringToDate(dateStr) {
     var parts = dateStr.split("-")
     return new Date(parts[0], parts[1], parts[2])
@@ -39,7 +33,7 @@ $(function () {
     var img = $('input[name="img"]');
     var date = $('input[name="date"]');
     var nation = $('input[name="nation"]');
-
+    //inserimento informazioni
     $.get(BASE_URL + "user/" + getUrlParameter("id"), function (data) {
         const template = buildUser(data);
         $("#usercol").append(template);
@@ -49,7 +43,7 @@ $(function () {
         date.val(data.birth);
         nation.val(data.nation);
         img.val(data.image);
-        roles.val(data.role);
+        roles.selectpicker("val", data.role.split(','));
         $.each(data.experiences, function (i, v) {
             const template = buildUserExp(v);
             $("#experiences").append(template);
@@ -97,7 +91,7 @@ $(function () {
             if (date.val() === "") {
                 dateParam = 0;
             } else {
-                dateParam = new Date(date.val()).getTime();
+                dateParam = stringToDate(new Date(date.val()).getTime());
             }
             $.post(BASE_URL + "update", {idTokenString: Cookies.get('token'), name: name.val(), surname: surname.val(), roles: roles.val().join(), mail: email.val(), birth: dateParam, nation: nation.val(), image: img.val()}, function (data) {
                 const template = buildUser(data);

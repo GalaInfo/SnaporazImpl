@@ -162,10 +162,12 @@ function buildProject(data) {
                     <div class="hidden tohideCard">
                         <h3 class="my-3">Ricompense</h3>
                         <textarea class="md-textarea form-control" readonly rows="3">${prizes}</textarea>
-                        <h3 class="my-3">Finanzia il progetto</h3>
-                        <div id="payment">
-                            <input class="form-control my-2" type="number" name="donation" placeholder="Cifra da donare" min="1">
-                            <div id="paypal"></div>
+                        <div class="hidden tohideDonation">
+                            <h3 class="my-3">Finanzia il progetto</h3>
+                            <div id="payment">
+                                <input class="form-control my-2" type="number" name="donation" placeholder="Cifra da donare" min="1">
+                                <div id="paypal"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -229,7 +231,7 @@ function buildUserThumbnail(data) {
     }
     const template = `
                     <div class="col-sm-2 text-center mb-4">
-                        <a href="user.html?id=${data.userId}"><img class="rounded-circle img-fluid d-block mx-auto" src=${image} alt="immagine profilo">
+                        <a href="user.html?id=${data.userId}"><img class="rounded-circle img-fluid d-block mx-auto thumbnail" src=${image} alt="immagine profilo" onerror="this.onerror=null; this.src='../img/user_placeholder.png';">
                         <h4>${name} ${surname}</h4>
                         </a>
                         <p><strong>${role}</strong><br>${data.character}</p>
@@ -276,7 +278,7 @@ function buildUser(data) {
     }
 
     const template = `
-                    <img src=${image} class="rounded-circle img-fluid d-block mx-auto" alt="avatar" id="thumbnail" onerror="imgError()">
+                    <img src=${image} class="rounded-circle img-fluid d-block mx-auto" alt="avatar" id="thumbnail" onerror="this.onerror=null; this.src='../img/user_placeholder.png';">
                     <h4 class="mt-4">${name}</h4>
                     <hr>
                     <h4>${surname}</h4>
@@ -307,10 +309,10 @@ function buildUserExp(data) {
         genres = data.genres;
     }
     if (data.start) {
-        start = data.date;
+        start = data.start;
     }
     if (data.end) {
-        end = data.date;
+        end = data.end;
     }
     if (data.role) {
         role = data.role;
@@ -318,10 +320,7 @@ function buildUserExp(data) {
     const template = `                                    
                     <tr>
                         <td>
-                            ${start}
-                        </td>
-                        <td>
-                            ${end}
+                            ${start} - ${end}
                         </td>
                         <td>
                             ${role}
