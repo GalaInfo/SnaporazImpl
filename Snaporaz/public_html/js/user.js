@@ -7,8 +7,13 @@ function newExp() {
 
     if (to && from && role && title && genres) {
         $.post(BASE_URL + "experience", {idTokenString: Cookies.get('token'), title: title, genres: genres, start: to, end: from, role: role}, function (data) {
-            const template = buildUserExp(data);
-            $("#experiences").append(template);
+            if (data.response) {
+                const alert = buildAlert(data.response);
+                $("#navbar").append(alert);
+            } else {
+                const template = buildUserExp(data);
+                $("#experiences").append(template);
+            }
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
             $("#navbar").append(alert);
@@ -52,7 +57,7 @@ $(function () {
         const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
         $("#navbar").append(alert);
     });
-    //aggiungi esperienza
+    //aggiunta opzioni per form aggiungi esperienza
     if (getUrlParameter("id") === Cookies.get('id')) {
         $(".tohide").show();
         $.get(BASE_URL + "roles", function (data) {
@@ -94,16 +99,21 @@ $(function () {
                 dateParam = stringToDate(new Date(date.val()).getTime());
             }
             $.post(BASE_URL + "update", {idTokenString: Cookies.get('token'), name: name.val(), surname: surname.val(), roles: roles.val().join(), mail: email.val(), birth: dateParam, nation: nation.val(), image: img.val()}, function (data) {
-                const template = buildUser(data);
-                $("#usercol").empty();
-                $("#usercol").append(template);
-                name.val(data.name);
-                surname.val(data.surname);
-                email.val(data.mail);
-                date.val(data.birth);
-                nation.val(data.nation);
-                img.val(data.image);
-                roles.val(data.role);
+                if (data.response) {
+                    const alert = buildAlert(data.response);
+                    $("#navbar").append(alert);
+                } else {
+                    const template = buildUser(data);
+                    $("#usercol").empty();
+                    $("#usercol").append(template);
+                    name.val(data.name);
+                    surname.val(data.surname);
+                    email.val(data.mail);
+                    date.val(data.birth);
+                    nation.val(data.nation);
+                    img.val(data.image);
+                    roles.val(data.role);
+                }
             }).fail(function () {
                 const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
                 $("#navbar").append(alert);

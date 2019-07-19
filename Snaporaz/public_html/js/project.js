@@ -30,9 +30,14 @@ $(function () {
                 return actions.order.capture().then(function (details) {
                     //Richiesta al server
                     $.post(BASE_URL + "donate", {payment: details.id, idTokenString: Cookies.get('token'), project: getUrlParameter("id"), amount: details.purchase_units[0].amount.value}, function (data) {
-                        const template = buildProjectDonation(data);
-                        $("#donationDiv").empty();
-                        $("#donationDiv").append(template);
+                        if (data.response) {
+                            const alert = buildAlert(data.response);
+                            $("#navbar").append(alert);
+                        } else {
+                            const template = buildProjectDonation(data);
+                            $("#donationDiv").empty();
+                            $("#donationDiv").append(template);
+                        }
                     });
                 });
             }
@@ -131,8 +136,8 @@ function castButton() {
 
 function addCandidacy(id, i) {
     $.post(BASE_URL + "candidacy", {part: id, idTokenString: Cookies.get('token')}, function (data) {
-        if (data.success === false) {
-            const alert = buildAlert("Non puoi candidarti per questa parte");
+        if (data.response) {
+            const alert = buildAlert(data.response);
             $("#navbar").append(alert);
         } else {
             const alert = buildAlert("Candidatura effettuata con <strong>successo</strong>");
@@ -154,8 +159,8 @@ function assign(i) {
     var candId = $("#candselect" + i).val();
     if (candId) {
         $.post(BASE_URL + "assign", {candidacy: candId, idTokenString: Cookies.get('token')}, function (data) {
-            if (data.success === false) {
-                const alert = buildAlert("Non puoi assegnare questo ruolo");
+            if (data.response) {
+                const alert = buildAlert(data.response);
                 $("#navbar").append(alert);
             } else {
                 const alert = buildAlert("Assegnamento avvenuto con <strong>successo</strong>");

@@ -49,7 +49,12 @@ $(function () {
         }
 
         $.post(BASE_URL + "newProject", {idTokenString: Cookies.get('token'), title: title, genres: genres, plot: plot, img: img, min: objective, prizes: rewards, owner: 0}, function (data) {
-            window.location = 'project.html?id=' + data.id;
+            if (data.response) {
+                const alert = buildAlert(data.response);
+                $("#navbar").append(alert);
+            } else {
+                window.location = 'project.html?id=' + data.id;
+            }
         }).fail(function () {
             const alert = buildAlert("Impossibile connettersi al server, <strong>ricarica</strong> la pagina o <strong>riprova</strong> più tardi");
             $("#navbar").append(alert);
