@@ -13,7 +13,7 @@ $(function () {
 //bottone paypal
         paypal.Buttons({
             createOrder: function (data, actions) {
-// Set up the transaction
+//inizializza la transazione
                 return actions.order.create({
                     purchase_units: [{
                             amount: {
@@ -29,7 +29,7 @@ $(function () {
                 //Cattura i dettagli della transazione
                 return actions.order.capture().then(function (details) {
                     //Richiesta al server
-                    $.post(BASE_URL + "donate", {payment: details.id, idTokenString: Cookies.get('token'), project: getUrlParameter("id"), amount: details.purchase_units[0].amount.value}, function (data) {
+                    $.post(BASE_URL + "donate", {payment: details.id, idTokenString: Cookies.get('token'), project: getUrlParameter("id")}, function (data) {
                         if (data.response) {
                             const alert = buildAlert(data.response);
                             $("#navbar").append(alert);
